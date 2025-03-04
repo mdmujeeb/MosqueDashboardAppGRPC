@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+//option java_package = "com.mujeeb.mosquedashboard.grpc";
+option java_outer_classname = "MosqueDashboardProto";
+option objc_class_prefix = "HLW";
+
+option java_package = "com.mujeeb.mosquedashboard.grpc";
+package com.mujeeb.mosquedashboard.grpc;
+
+// The Mosque Dashboard Service Definition.
+service MosqueDashboardService {
+  rpc GetDataForMobileApp(EmptyRequest) returns (GetDataForMobileAppRequest) {}
+  rpc UpdateNamazTime(NamazTime) returns (GenericReply) {}
+  rpc ChangeHijriAdjustment(HijriAdjustmentUpdateRequest) returns (GenericReply) {}
+  rpc TestAudio(EmptyRequest) returns (GenericReply) {}
+  rpc ChangeScreenSaverState(ScreenSaverStateUpdateRequest) returns (GenericReply) {}
+  rpc SetDateTime(StringContainer) returns (GenericReply) {}
+  rpc RestartSystem(EmptyRequest) returns (GenericReply) {}
+  rpc HasDateChanged(EmptyRequest) returns (StringContainer) {}
+}
+
+// Request Beans
+message NamazTime {
+  AuthData authData = 1;
+  string namazTimeName = 2;
+  int32 hour = 3;
+  int32 minute = 4;
+}
+
+message GetDataForMobileAppRequest {
+	NamazTime fajrTime = 1;
+	NamazTime zuhrTime = 2;
+	NamazTime asrTime = 3;
+	NamazTime ishaTime = 4;
+	NamazTime jumuaTime = 5;
+	NamazTime screenSaverOnTime = 6;
+	NamazTime screenSaverOffTime = 7;
+	int32 hijriAdjustment = 8;
+	int32 hijriDate = 9;
+	string hijriMonth = 10;
+	int32 hijriYear = 11;
+}
+
+message HijriAdjustmentUpdateRequest {
+  AuthData authData = 1;
+  int32 hijriAdjustment = 2;
+}
+
+message ScreenSaverStateUpdateRequest {
+  AuthData authData = 1;
+  bool isOn = 2;
+}
+
+message StringContainer {
+  AuthData authData = 1;
+  string str = 2;
+}
+
+message AuthData {
+  string userName = 1;
+  string password = 2;
+}
+
+// The response message containing the response
+message GenericReply {
+  string description = 1;
+  int32 responseCode = 2;
+}
+
+message EmptyRequest {
+}
