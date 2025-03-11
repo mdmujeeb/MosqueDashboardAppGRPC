@@ -4,13 +4,13 @@ import 'package:grpc/grpc.dart';
 import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pbgrpc.dart';
 
 class GRPCUtil {
-  static const host = 'localhost';
+  static const host = '192.168.42.1';
   static const port = 8090;
 
   // ignore: prefer_typing_uninitialized_variables
   static var clientStub;
 
-  static() {
+  GRPCUtil() {
     final channel = ClientChannel(host,
         port: port,
         options:
@@ -20,12 +20,13 @@ class GRPCUtil {
         options: CallOptions(timeout: const Duration(seconds: 30)));
   }
 
-  static Future<GetDataForMobileAppRequest> getDataForMobileApp() async {
+  Future<GetDataForMobileAppRequest> getDataForMobileApp() async {
     try {
       final response = await (clientStub as MosqueDashboardServiceClient)
           .getDataForMobileApp(EmptyRequest.getDefault());
       return response;
     } catch (error) {
+      print(error);
       return GetDataForMobileAppRequest.getDefault();
     }
   }
@@ -50,7 +51,7 @@ class GRPCUtil {
   //   }
   // }
 
-  static Future<GenericReply> updateNamazTime(String userName, String password,
+  Future<GenericReply> updateNamazTime(String userName, String password,
       String name, int hour, int minute) async {
     NamazTime namazTime = NamazTime.getDefault();
     namazTime.authData = getAuthData(userName, password);
@@ -67,7 +68,7 @@ class GRPCUtil {
     }
   }
 
-  static Future<GenericReply> updateHijriAdjustment(
+  Future<GenericReply> updateHijriAdjustment(
       String userName, String password, int adjustment) async {
     HijriAdjustmentUpdateRequest request =
         HijriAdjustmentUpdateRequest.getDefault();
@@ -83,7 +84,7 @@ class GRPCUtil {
     }
   }
 
-  static Future<GenericReply> changeScreenSaverState(
+  Future<GenericReply> changeScreenSaverState(
       String userName, String password, bool state) async {
     ScreenSaverStateUpdateRequest request =
         ScreenSaverStateUpdateRequest.getDefault();
@@ -99,7 +100,7 @@ class GRPCUtil {
     }
   }
 
-  static Future<GenericReply> testAudio() async {
+  Future<GenericReply> testAudio() async {
     try {
       final response = await (clientStub as MosqueDashboardServiceClient)
           .testAudio(EmptyRequest.getDefault());
@@ -109,7 +110,7 @@ class GRPCUtil {
     }
   }
 
-  static Future<GenericReply> restartSystem() async {
+  Future<GenericReply> restartSystem() async {
     try {
       final response = await (clientStub as MosqueDashboardServiceClient)
           .restartSystem(EmptyRequest.getDefault());
@@ -119,7 +120,7 @@ class GRPCUtil {
     }
   }
 
-  static Future<GenericReply> setTime(String userName, String password) async {
+  Future<GenericReply> setTime(String userName, String password) async {
     DateFormat formatter = DateFormat('dd MMM yyyy H:m:00');
     String strTime = formatter.format(DateTime.now());
     StringContainer container = StringContainer.getDefault();
@@ -171,10 +172,15 @@ class GRPCUtil {
   //   }
   // }
 
-  static AuthData getAuthData(String userName, String password) {
+  AuthData getAuthData(String userName, String password) {
     AuthData auth = AuthData.getDefault();
     auth.userName = userName;
     auth.password = password;
     return auth;
   }
+}
+
+void main(List<String> arguments) async {
+  var data = await GRPCUtil().getDataForMobileApp();
+  print(data);
 }

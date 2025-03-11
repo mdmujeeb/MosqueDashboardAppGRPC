@@ -4,6 +4,7 @@ import '../util/grpc_util.dart';
 
 class NamazTimes with ChangeNotifier {
   final _namazTimes = {};
+  final GRPCUtil _grpcUtil = GRPCUtil();
 
   void updateData(GetDataForMobileAppRequest namazTimes) {
     _namazTimes['FAJR'] =
@@ -31,7 +32,7 @@ class NamazTimes with ChangeNotifier {
   Future<bool> updateNamazTime(String masjidId, String password, String name,
       int hour, int minute) async {
     final GenericReply result =
-        await GRPCUtil.updateNamazTime(masjidId, password, name, hour, minute);
+        await _grpcUtil.updateNamazTime(masjidId, password, name, hour, minute);
     if (result.responseCode == 0) {
       _namazTimes[name] = '${hour.toString()}:${minute.toString()}';
       notifyListeners();
@@ -39,6 +40,10 @@ class NamazTimes with ChangeNotifier {
     } else {
       return false;
     }
+  }
+
+  get grpcUtil {
+    return _grpcUtil;
   }
 
   get namazTimes {

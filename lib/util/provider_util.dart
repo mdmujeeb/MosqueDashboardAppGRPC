@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../providers/auth.dart';
 import '../providers/namaz_times.dart';
-import '../util/grpc_util.dart';
 import '../util/function_util.dart';
 
 class ProviderUtil {
@@ -19,7 +18,9 @@ class ProviderUtil {
 
     try {
       final GetDataForMobileAppRequest result =
-          await GRPCUtil.getDataForMobileApp();
+          await Provider.of<NamazTimes>(context, listen: false)
+              .grpcUtil
+              .getDataForMobileApp();
 
       Provider.of<NamazTimes>(context, listen: false).updateData(result);
       return true;

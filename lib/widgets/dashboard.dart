@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mosque_dashboard_local/providers/namaz_times.dart';
 import 'package:provider/provider.dart';
 
 import 'dashboard_info.dart';
 import '../providers/auth.dart';
 import '../pages/login_page.dart';
 import '../util/function_util.dart';
-import '../util/grpc_util.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -28,7 +28,9 @@ class _DashboardState extends State<Dashboard> {
       setState(() {
         _isLoadingSetTime = true;
       });
-      await GRPCUtil.setTime(auth.masjidId, auth.password);
+      await Provider.of<NamazTimes>(context, listen: false)
+          .grpcUtil
+          .setTime(auth.masjidId, auth.password);
       FunctionUtil.showSnackBar(
           context, 'Time Sync request submitted successfully.', Colors.green);
 

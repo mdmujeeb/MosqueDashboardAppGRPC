@@ -59,7 +59,7 @@ class _OccasionsWidgetState extends State<OccasionsWidget> {
                         direction: DismissDirection.endToStart,
                         confirmDismiss: (_) => showDialog(
                           context: context,
-                          builder: (ctx) => CustomAlertDialog(
+                          builder: (ctx) => const CustomAlertDialog(
                             'Confirm Operation',
                             'Are you sure you want to delete this Occasion?',
                           ),
@@ -155,7 +155,7 @@ class _OccasionsWidgetState extends State<OccasionsWidget> {
                 onPressed: () {
                   showModalBottomSheet(
                     context: context,
-                    builder: (context) => AddOccasion(),
+                    builder: (context) => const AddOccasion(),
                   ).then((result) async {
                     if (result != null) {
                       if (!auth.isLoggedIn) {

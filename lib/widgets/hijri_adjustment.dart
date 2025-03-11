@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pb.dart';
-import 'package:mosque_dashboard_local/util/grpc_util.dart';
 import 'package:mosque_dashboard_local/util/provider_util.dart';
 import 'package:provider/provider.dart';
 
@@ -93,8 +92,11 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
                           _isLoading = true;
                         });
                         final GenericReply result =
-                            await GRPCUtil.updateHijriAdjustment(auth.masjidId,
-                                auth.password, adjustmentList[index]);
+                            await Provider.of<NamazTimes>(context,
+                                    listen: false)
+                                .grpcUtil
+                                .updateHijriAdjustment(auth.masjidId,
+                                    auth.password, adjustmentList[index]);
                         if (result.responseCode == 0) {
                           FunctionUtil.showSnackBar(
                               context, 'Updated successfully.', Colors.green);

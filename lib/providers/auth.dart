@@ -18,8 +18,8 @@ class Auth with ChangeNotifier {
         return true;
       }
       data = json.decode(data.toString());
-      _masjidId = '' + (data?[keyMasjidId] ?? '1').toString();
-      _password = '' + (data?[keyPassword] ?? '').toString();
+      _masjidId = '${data?[keyMasjidId] ?? '1'}';
+      _password = '${data?[keyPassword] ?? ''}';
       notifyListeners();
       return true;
     } catch (error) {

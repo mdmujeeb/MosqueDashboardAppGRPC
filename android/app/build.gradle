@@ -31,9 +31,7 @@ android {
         config {
             keyAlias 'upload'
             keyPassword 'Mummy@123'
-            storeFile file('/D:/Development/GoogleCloudCredentials/MosqueManager.jks')
-            // storeFile file('/Users/mujeeb/Documents/workspace/MosqueManager.jks')
-            // storeFile file('/home/mujeeb/Documents/workspace/MosqueManager.jks')
+            storeFile file('/G:/GoogleCloudCredentials/MosqueManager.jks')
             storePassword 'Mummy@123'
         }
     }
