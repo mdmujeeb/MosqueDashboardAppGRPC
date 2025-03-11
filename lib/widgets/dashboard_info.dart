@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pb.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
 import '../providers/namaz_times.dart';
-import '../providers/temperature.dart';
-import '../providers/hijri_date.dart';
 
 class DashboardInfo extends StatefulWidget {
-  static const Color NAFIL_NAMAZ_TIME_COLOR = Colors.black38;
-  static const Color NAMAZ_TIME_COLOR = Colors.black;
-  static const Color NAMAZ_TIME_VALUE_COLOR = Colors.green;
+  static const Color nafilNamazTimeColor = Colors.black38;
+  static const Color namazTimeColor = Colors.black;
+  static const Color namazTimeValueColor = Colors.green;
   static final Color? nafilNamazTimeValueColor = Colors.green[700];
 
   @override
@@ -19,20 +18,20 @@ class DashboardInfo extends StatefulWidget {
 class _DashboardInfoState extends State<DashboardInfo> {
   double namazFontSize = 18;
 
-  Color _parseColor(String color) {
-    switch (color) {
-      case 'cyan':
-        return Colors.cyan;
-      case 'yellow':
-        return Colors.yellow;
-      case 'orange':
-        return Colors.orange;
-      case 'red':
-        return Colors.red;
-      default:
-        return Colors.cyan;
-    }
-  }
+  // Color _parseColor(String color) {
+  //   switch (color) {
+  //     case 'cyan':
+  //       return Colors.cyan;
+  //     case 'yellow':
+  //       return Colors.yellow;
+  //     case 'orange':
+  //       return Colors.orange;
+  //     case 'red':
+  //       return Colors.red;
+  //     default:
+  //       return Colors.cyan;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,7 @@ class _DashboardInfoState extends State<DashboardInfo> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
                     color: Colors.black,
                     border: Border.all(width: 1),
@@ -57,25 +56,16 @@ class _DashboardInfoState extends State<DashboardInfo> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Consumer<Temperature>(
-                        builder: (ctx, temperature, _) => Text(
-                          '${temperature.temperature}°c',
-                          style: TextStyle(
-                            fontSize: 60,
-                            color: _parseColor(temperature.color),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Consumer<HijriDate>(
-                        builder: (ctx, hijriDate, _) => Container(
+                      Consumer<NamazTimes>(
+                        builder: (ctx, namazTImes, _) => Container(
                           height: MediaQuery.of(context).size.width >= 470
                               ? 100
                               : 80,
                           child: FadeInImage(
                             image: NetworkImage(
-                                'http://192.168.0.1/moonphases/${hijriDate.date}.jpg'),
-                            placeholder: AssetImage('assets/images/moon.jpg'),
+                                'http://192.168.0.1/moonphases/${namazTimes.namazTimes['HIJRI_DATE']}.jpg'),
+                            placeholder:
+                                const AssetImage('assets/images/moon.jpg'),
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -96,9 +86,9 @@ class _DashboardInfoState extends State<DashboardInfo> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Consumer<HijriDate>(
+                      Consumer<NamazTime>(
                         builder: (ctx, hijriDate, _) => Text(
-                          hijriDate.hijriDate,
+                          namazTimes.namazTimes['HIJRI_DATE'],
                           style: TextStyle(
                             fontSize: (MediaQuery.of(context).size.width >= 380
                                     ? 20
@@ -116,72 +106,72 @@ class _DashboardInfoState extends State<DashboardInfo> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6),
                 child: Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'ISHRAQ:',
-                            style: TextStyle(
-                              fontSize: namazFontSize,
-                              color: DashboardInfo.NAFIL_NAMAZ_TIME_COLOR,
-                            ),
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            namazTimes.namazTimes['ISHRAQ'],
-                            style: TextStyle(
-                              fontSize: namazFontSize,
-                              color: DashboardInfo.nafilNamazTimeValueColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'SEHERI:',
-                            style: TextStyle(
-                              fontSize: namazFontSize,
-                              color: DashboardInfo.NAFIL_NAMAZ_TIME_COLOR,
-                            ),
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            namazTimes.namazTimes['SEHERI'],
-                            style: TextStyle(
-                              fontSize: namazFontSize,
-                              color: DashboardInfo.nafilNamazTimeValueColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'IFTAR:',
-                            style: TextStyle(
-                              fontSize: namazFontSize,
-                              color: DashboardInfo.NAFIL_NAMAZ_TIME_COLOR,
-                            ),
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            namazTimes.namazTimes['IFTAR'],
-                            style: TextStyle(
-                              fontSize: namazFontSize,
-                              color: DashboardInfo.nafilNamazTimeValueColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
+                  // Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  // children: [
+                  // Row(
+                  //   children: [
+                  //     Text(
+                  //       'ISHRAQ:',
+                  //       style: TextStyle(
+                  //         fontSize: namazFontSize,
+                  //         color: DashboardInfo.nafilNamazTimeColor,
+                  //       ),
+                  //     ),
+                  //     const SizedBox(width: 4),
+                  //     Text(
+                  //       namazTimes.namazTimes['ISHRAQ'],
+                  //       style: TextStyle(
+                  //         fontSize: namazFontSize,
+                  //         color: DashboardInfo.nafilNamazTimeValueColor,
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Row(
+                  //   children: [
+                  //     Text(
+                  //       'SUHUR:',
+                  //       style: TextStyle(
+                  //         fontSize: namazFontSize,
+                  //         color: DashboardInfo.nafilNamazTimeColor,
+                  //       ),
+                  //     ),
+                  //     const SizedBox(width: 4),
+                  //     Text(
+                  //       namazTimes.namazTimes['SUHUR'],
+                  //       style: TextStyle(
+                  //         fontSize: namazFontSize,
+                  //         color: DashboardInfo.nafilNamazTimeValueColor,
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Row(
+                  //   children: [
+                  //     Text(
+                  //       'IFTAR:',
+                  //       style: TextStyle(
+                  //         fontSize: namazFontSize,
+                  //         color: DashboardInfo.nafilNamazTimeColor,
+                  //       ),
+                  //     ),
+                  //     const SizedBox(width: 4),
+                  //     Text(
+                  //       namazTimes.namazTimes['IFTAR'],
+                  //       style: TextStyle(
+                  //         fontSize: namazFontSize,
+                  //         color: DashboardInfo.nafilNamazTimeValueColor,
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // ],
+                  // ),
+                  // const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -191,7 +181,7 @@ class _DashboardInfoState extends State<DashboardInfo> {
                             'FAJR:',
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_COLOR,
+                              color: DashboardInfo.namazTimeColor,
                             ),
                           ),
                           const SizedBox(width: 4),
@@ -199,7 +189,7 @@ class _DashboardInfoState extends State<DashboardInfo> {
                             namazTimes.namazTimes['FAJR'],
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_VALUE_COLOR,
+                              color: DashboardInfo.namazTimeValueColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -208,18 +198,18 @@ class _DashboardInfoState extends State<DashboardInfo> {
                       Row(
                         children: [
                           Text(
-                            'ZOHOR:',
+                            'ZUHR:',
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_COLOR,
+                              color: DashboardInfo.namazTimeColor,
                             ),
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            namazTimes.namazTimes['ZOHOR'],
+                            namazTimes.namazTimes['ZUHR'],
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_VALUE_COLOR,
+                              color: DashboardInfo.namazTimeValueColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -231,7 +221,7 @@ class _DashboardInfoState extends State<DashboardInfo> {
                             'ASR:',
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_COLOR,
+                              color: DashboardInfo.namazTimeColor,
                             ),
                           ),
                           const SizedBox(width: 4),
@@ -239,7 +229,7 @@ class _DashboardInfoState extends State<DashboardInfo> {
                             namazTimes.namazTimes['ASR'],
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_VALUE_COLOR,
+                              color: DashboardInfo.namazTimeValueColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -254,18 +244,18 @@ class _DashboardInfoState extends State<DashboardInfo> {
                       Row(
                         children: [
                           Text(
-                            'MAGRIB',
+                            'MAGHRIB',
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_COLOR,
+                              color: DashboardInfo.namazTimeColor,
                             ),
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            namazTimes.namazTimes['MAGRIB'],
+                            namazTimes.namazTimes['MAGHRIB'],
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_VALUE_COLOR,
+                              color: DashboardInfo.namazTimeValueColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -277,7 +267,7 @@ class _DashboardInfoState extends State<DashboardInfo> {
                             'ISHA:',
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_COLOR,
+                              color: DashboardInfo.namazTimeColor,
                             ),
                           ),
                           const SizedBox(width: 4),
@@ -285,7 +275,7 @@ class _DashboardInfoState extends State<DashboardInfo> {
                             namazTimes.namazTimes['ISHA'],
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_VALUE_COLOR,
+                              color: DashboardInfo.namazTimeValueColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -294,18 +284,18 @@ class _DashboardInfoState extends State<DashboardInfo> {
                       Row(
                         children: [
                           Text(
-                            'JUMA:',
+                            'JUMUA:',
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_COLOR,
+                              color: DashboardInfo.namazTimeColor,
                             ),
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            namazTimes.namazTimes['JUMA'],
+                            namazTimes.namazTimes['JUMUA'],
                             style: TextStyle(
                               fontSize: namazFontSize,
-                              color: DashboardInfo.NAMAZ_TIME_VALUE_COLOR,
+                              color: DashboardInfo.namazTimeValueColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

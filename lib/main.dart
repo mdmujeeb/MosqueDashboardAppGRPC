@@ -8,7 +8,6 @@ import 'pages/about_page.dart';
 
 import 'providers/auth.dart';
 import 'providers/namaz_times.dart';
-import 'providers/hijri_date.dart';
 import 'providers/temperature.dart';
 import 'providers/occasions.dart';
 
@@ -27,7 +26,6 @@ class MosqueDashboardApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<Auth>(create: (_) => Auth()),
         ChangeNotifierProvider<NamazTimes>(create: (_) => NamazTimes()),
-        ChangeNotifierProvider<HijriDate>(create: (_) => HijriDate()),
         ChangeNotifierProvider<Occasions>(create: (_) => Occasions()),
         ChangeNotifierProvider<Temperature>(create: (_) => Temperature()),
       ],

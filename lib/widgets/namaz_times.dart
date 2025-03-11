@@ -17,12 +17,12 @@ class NamazTimesWidget extends StatefulWidget {
 }
 
 class _NamazTimesWidgetState extends State<NamazTimesWidget> {
-  Map<String, bool> _isLoading = {
+  final Map<String, bool> _isLoading = {
     'FAJR': false,
-    'ZOHOR': false,
+    'ZUHR': false,
     'ASR': false,
     'ISHA': false,
-    'JUMA': false,
+    'JUMUA': false,
   };
 
   void _pickTimeForNamazTime(
@@ -48,10 +48,13 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
           setState(() {
             _isLoading[name] = true;
           });
-          var strNewMinutes = newMinutes < 10 ? '0$newMinutes' : '$newMinutes';
+          // var strNewMinutes = newMinutes < 10 ? '0$newMinutes' : '$newMinutes';
+          // final result = await Provider.of<NamazTimes>(context, listen: false)
+          //     .updateNamazTime(auth.masjidId, auth.password, name,
+          //         '$newHours:$strNewMinutes');
           final result = await Provider.of<NamazTimes>(context, listen: false)
-              .updateNamazTime(auth.masjidId, auth.password, name,
-                  '$newHours:$strNewMinutes');
+              .updateNamazTime(
+                  auth.masjidId, auth.password, name, newHours, newMinutes);
           if (result) {
             FunctionUtil.showSnackBar(
                 context, 'Updated successfully.', Colors.green);
@@ -119,7 +122,7 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
           ListTile(
             leading: Chip(
               label: Text(
-                namazTimes.namazTimes['ZOHOR'],
+                namazTimes.namazTimes['ZUHR'],
                 style: TextStyle(
                     fontSize: namazTimeSize,
                     color: Theme.of(context).colorScheme.onSecondary),
@@ -127,10 +130,10 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
               backgroundColor: Colors.green,
             ),
             title: Text(
-              'ZOHOR',
+              'ZUHR',
               style: TextStyle(fontSize: namazTimeSize),
             ),
-            trailing: _isLoading['ZOHOR'] == null
+            trailing: _isLoading['ZUHR'] == null
                 ? const CircularProgressIndicator()
                 : ElevatedButton.icon(
                     style: ButtonStyle(
@@ -149,8 +152,8 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
                     ),
                     onPressed: () => _pickTimeForNamazTime(
                       context,
-                      'ZOHOR',
-                      namazTimes.namazTimes['ZOHOR'],
+                      'ZUHR',
+                      namazTimes.namazTimes['ZUHR'],
                     ),
                   ),
           ),
@@ -236,7 +239,7 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
           ListTile(
             leading: Chip(
               label: Text(
-                namazTimes.namazTimes['JUMA'],
+                namazTimes.namazTimes['JUMUA'],
                 style: TextStyle(
                     fontSize: namazTimeSize,
                     color: Theme.of(context).colorScheme.onSecondary),
@@ -244,10 +247,10 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
               backgroundColor: Colors.green,
             ),
             title: Text(
-              'JUMA',
+              'JUMUA',
               style: TextStyle(fontSize: namazTimeSize),
             ),
-            trailing: _isLoading['JUMA'] == null
+            trailing: _isLoading['JUMUA'] == null
                 ? const CircularProgressIndicator()
                 : ElevatedButton.icon(
                     style: ButtonStyle(
@@ -266,8 +269,8 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
                     ),
                     onPressed: () => _pickTimeForNamazTime(
                       context,
-                      'JUMA',
-                      namazTimes.namazTimes['JUMA'],
+                      'JUMUA',
+                      namazTimes.namazTimes['JUMUA'],
                     ),
                   ),
           ),

@@ -1,24 +1,39 @@
 import 'package:flutter/material.dart';
-import '../util/api_util.dart';
+import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pb.dart';
+import '../util/grpc_util.dart';
 
 class NamazTimes with ChangeNotifier {
-  var _namazTimes = {};
-  var _masjidList = [];
-  var _masjidName = 'Abdullah Bin Masood Masjid';
+  final _namazTimes = {};
 
-  void updateData(namazTimes, masjidList, masjidName) {
-    _namazTimes = namazTimes;
-    _masjidList = masjidList;
-    _masjidName = masjidName;
+  void updateData(GetDataForMobileAppRequest namazTimes) {
+    _namazTimes['FAJR'] =
+        '${namazTimes.fajrTime.hour.toString()}:${namazTimes.fajrTime.minute.toString()}';
+    _namazTimes['ZUHR'] =
+        '${namazTimes.zuhrTime.hour.toString()}:${namazTimes.zuhrTime.minute.toString()}';
+    _namazTimes['ASR'] =
+        '${namazTimes.asrTime.hour.toString()}:${namazTimes.asrTime.minute.toString()}';
+    _namazTimes['ISHA'] =
+        '${namazTimes.ishaTime.hour.toString()}:${namazTimes.ishaTime.minute.toString()}';
+    _namazTimes['JUMUA'] =
+        '${namazTimes.jumuaTime.hour.toString()}:${namazTimes.jumuaTime.minute.toString()}';
+    _namazTimes['JUMUA'] =
+        '${namazTimes.jumuaTime.hour.toString()}:${namazTimes.jumuaTime.minute.toString()}';
+    _namazTimes['HIJRI_ADJUSTMENT'] = namazTimes.hijriAdjustment.toString();
+    _namazTimes['SCREEN_SAVER_SCHEDULE'] =
+        '${namazTimes.screenSaverOnTime.hour.toString()}:${namazTimes.screenSaverOnTime.minute.toString()},${namazTimes.screenSaverOffTime.hour.toString()}:${namazTimes.screenSaverOffTime.minute.toString()}';
+    _namazTimes['HIJRI_DATE'] = namazTimes.hijriDate;
+    _namazTimes['HIJRI_MONTH'] = namazTimes.hijriMonth;
+    _namazTimes['HIJRI_YEAR'] = namazTimes.hijriYear;
+
     notifyListeners();
   }
 
-  Future<bool> updateNamazTime(
-      String masjidId, String password, String name, String time) async {
-    final result =
-        await APIUtil.updateNamazTime(masjidId, password, name, time);
-    if (result['resultCode'] == 0) {
-      _namazTimes[name] = time;
+  Future<bool> updateNamazTime(String masjidId, String password, String name,
+      int hour, int minute) async {
+    final GenericReply result =
+        await GRPCUtil.updateNamazTime(masjidId, password, name, hour, minute);
+    if (result.responseCode == 0) {
+      _namazTimes[name] = '${hour.toString()}:${minute.toString()}';
       notifyListeners();
       return true;
     } else {
@@ -28,14 +43,6 @@ class NamazTimes with ChangeNotifier {
 
   get namazTimes {
     return _namazTimes;
-  }
-
-  get masjidList {
-    return _masjidList;
-  }
-
-  String get masjidName {
-    return _masjidName;
   }
 
   String get hijriAdjustment {

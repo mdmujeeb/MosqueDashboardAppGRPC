@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/auth.dart';
-import '../util/api_util.dart';
 import '../util/function_util.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,13 +24,17 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         _isLoading = true;
       });
-      final result = await APIUtil.authenticate(_masjidId, _password);
+      // final result = await APIUtil.authenticate(_masjidId, _password);
+      final result = {
+        'resultCode': 0,
+        'description': 'Authentication Successful!'
+      };
       if (result['resultCode'] == 0) {
         bool res = await Provider.of<Auth>(context, listen: false)
             .successfulAuthentication(_masjidId, _password);
         if (res) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(result['description']),
+            content: Text(result['description'].toString()),
           ));
           Navigator.of(context).pop(true);
         } else {
@@ -39,8 +42,8 @@ class _LoginPageState extends State<LoginPage> {
         }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(result['description']),
-          backgroundColor: Theme.of(context).errorColor,
+          content: Text(result['description'].toString()),
+          backgroundColor: Theme.of(context).colorScheme.error,
         ));
       }
       setState(() {

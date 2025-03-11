@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:mosque_dashboard_local/util/provider_util.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
 import '../providers/auth.dart';
 import '../providers/occasions.dart';
-import '../providers/hijri_date.dart';
 import '../pages/login_page.dart';
 import '../widgets/add_occasion.dart';
 import '../widgets/custom_alert_dialog.dart';
@@ -45,7 +45,7 @@ class _OccasionsWidgetState extends State<OccasionsWidget> {
 
     return Center(
       child: Padding(
-        padding: EdgeInsets.only(bottom: 50),
+        padding: const EdgeInsets.only(bottom: 50),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -76,15 +76,15 @@ class _OccasionsWidgetState extends State<OccasionsWidget> {
                           setState(() {
                             _isLoading = true;
                           });
-                          final result = await occasions.deleteOccasion(
-                              auth.masjidId,
-                              auth.password,
-                              occasions.occasions[index]['id'].toString());
+                          // final result = await occasions.deleteOccasion(
+                          //     auth.masjidId,
+                          //     auth.password,
+                          //     occasions.occasions[index]['id'].toString());
+                          const result = 1 == 1;
                           if (result) {
                             FunctionUtil.showSnackBar(
                                 context, 'Deleted successfully.', Colors.green);
-                            await Provider.of<HijriDate>(context, listen: false)
-                                .fetchAndSetData(auth.masjidId);
+                            await ProviderUtil.loadAllProviders(context);
                             widget._refreshParentPage();
                           } else {
                             FunctionUtil.showSnackBar(context,
@@ -95,11 +95,11 @@ class _OccasionsWidgetState extends State<OccasionsWidget> {
                           });
                         },
                         background: Container(
-                          color: Theme.of(context).errorColor,
-                          child: Icon(Icons.delete,
-                              color: Theme.of(context).colorScheme.onSecondary),
+                          color: Theme.of(context).colorScheme.error,
                           alignment: Alignment.centerRight,
                           padding: const EdgeInsets.all(10),
+                          child: Icon(Icons.delete,
+                              color: Theme.of(context).colorScheme.onSecondary),
                         ),
                         child: ListTile(
                           leading: Chip(
@@ -107,12 +107,13 @@ class _OccasionsWidgetState extends State<OccasionsWidget> {
                               DateFormat('dd MMM').format(DateTime.parse(
                                   occasions.occasions[index]['date'])),
                               style: TextStyle(
-                                  fontSize:
-                                      (MediaQuery.of(context).size.width >= 380
+                                  fontSize: MediaQuery.of(context)
+                                      .textScaler
+                                      .scale(
+                                          (MediaQuery.of(context).size.width >=
+                                                  380
                                               ? 20
-                                              : 13) /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor,
+                                              : 13)),
                                   color: Theme.of(context)
                                       .colorScheme
                                       .onSecondary),
@@ -163,16 +164,16 @@ class _OccasionsWidgetState extends State<OccasionsWidget> {
                         setState(() {
                           _isLoading = true;
                         });
-                        final response = await occasions.addOccasion(
-                            auth.masjidId,
-                            auth.password,
-                            result['date'],
-                            result['name']);
+                        // final response = await occasions.addOccasion(
+                        //     auth.masjidId,
+                        //     auth.password,
+                        //     result['date'],
+                        //     result['name']);
+                        const response = 1 == 1;
                         if (response) {
                           FunctionUtil.showSnackBar(
                               context, 'Added successfully.', Colors.green);
-                          await Provider.of<HijriDate>(context, listen: false)
-                              .fetchAndSetData(auth.masjidId);
+                          await ProviderUtil.loadAllProviders(context);
                           widget._refreshParentPage();
                         } else {
                           FunctionUtil.showSnackBar(

@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: assets/proto/mosque-dashboard.proto
+//  source: mosque-dashboard.proto
 //
 // @dart = 2.12
 

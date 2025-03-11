@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pb.dart';
+import 'package:mosque_dashboard_local/util/grpc_util.dart';
+import 'package:mosque_dashboard_local/util/provider_util.dart';
 import 'package:provider/provider.dart';
 
 import '../pages/login_page.dart';
 import '../providers/auth.dart';
 import '../providers/namaz_times.dart';
 import '../widgets/string_picker.dart';
-import '../providers/hijri_date.dart';
 import '../util/function_util.dart';
 
 class HijriAdjustmentWidget extends StatefulWidget {
@@ -22,10 +24,11 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
 
   @override
   Widget build(BuildContext context) {
+    const adjustmentList = [-5, -4 - 3, -2, -1, 0, 1, 2, 3, 4, 5];
     final auth = Provider.of<Auth>(context);
     final NamazTimes namazTimes = Provider.of<NamazTimes>(context);
-    final currentIndex = HijriDate.ADJUSTMENT_LIST
-        .indexOf(namazTimes.namazTimes['HIJRI_ADJUSTMENT']);
+    final currentIndex =
+        adjustmentList.indexOf(namazTimes.namazTimes['HIJRI_ADJUSTMENT']);
 
     return Center(
       child: Container(
@@ -78,7 +81,7 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
                     onPressed: () => showModalBottomSheet(
                       context: context,
                       builder: (context) =>
-                          StringPicker(HijriDate.ADJUSTMENT_LIST, currentIndex),
+                          StringPicker(adjustmentList, currentIndex),
                     ).then((index) async {
                       // Navigator.of(context).pop();
                       if (index == null || index == currentIndex) {
@@ -90,16 +93,13 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
                         setState(() {
                           _isLoading = true;
                         });
-                        final result = await namazTimes.updateNamazTime(
-                            auth.masjidId,
-                            auth.password,
-                            'HIJRI_ADJUSTMENT',
-                            HijriDate.ADJUSTMENT_LIST[index]);
-                        if (result) {
+                        final GenericReply result =
+                            await GRPCUtil.updateHijriAdjustment(auth.masjidId,
+                                auth.password, adjustmentList[index]);
+                        if (result.responseCode == 0) {
                           FunctionUtil.showSnackBar(
                               context, 'Updated successfully.', Colors.green);
-                          await Provider.of<HijriDate>(context, listen: false)
-                              .fetchAndSetData(auth.masjidId);
+                          ProviderUtil.loadAllProviders(context);
                           widget._refreshParentPage();
                         } else {
                           FunctionUtil.showSnackBar(

@@ -39,14 +39,21 @@ class _ScreenSaverScheduleState extends State<ScreenSaverSchedule> {
           setState(() {
             isStartTime ? _isLoadingStartTime = true : _isLoadingEndTime = true;
           });
-          var strNewMinutes = newMinutes < 10 ? '0$newMinutes' : '$newMinutes';
-          String newTime = '$newHours:$strNewMinutes';
+          // var strNewMinutes = newMinutes < 10 ? '0$newMinutes' : '$newMinutes';
+          // String newTime = '$newHours:$strNewMinutes';
+          // final result = await Provider.of<NamazTimes>(context, listen: false)
+          //     .updateNamazTime(
+          //         auth.masjidId,
+          //         auth.password,
+          //         'SCREEN_SAVER_SCHEDULE',
+          //         isStartTime ? '$newTime,$endTime' : '$startTime,$newTime');
           final result = await Provider.of<NamazTimes>(context, listen: false)
               .updateNamazTime(
                   auth.masjidId,
                   auth.password,
-                  'SCREEN_SAVER_SCHEDULE',
-                  isStartTime ? '$newTime,$endTime' : '$startTime,$newTime');
+                  isStartTime ? 'SCREEN_SAVER_ON' : 'SCREEN_SAVER_OFF',
+                  newHours,
+                  newMinutes);
           if (result) {
             FunctionUtil.showSnackBar(
                 context, 'Updated successfully.', Colors.green);

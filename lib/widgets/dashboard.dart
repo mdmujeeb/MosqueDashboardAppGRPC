@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'dashboard_info.dart';
-// import 'custom_alert_dialog.dart';
 import '../providers/auth.dart';
-// import '../providers/namaz_times.dart';
 import '../pages/login_page.dart';
 import '../util/function_util.dart';
-import '../util/api_util.dart';
+import '../util/grpc_util.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -28,7 +26,7 @@ class _DashboardState extends State<Dashboard> {
       setState(() {
         _isLoadingSetTime = true;
       });
-      await APIUtil.setTime();
+      await GRPCUtil.setTime(auth.masjidId, auth.password);
       FunctionUtil.showSnackBar(
           context, 'Time Sync request submitted successfully.', Colors.green);
 

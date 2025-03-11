@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: assets/proto/mosque-dashboard.proto
+//  source: mosque-dashboard.proto
 //
 // @dart = 2.12
 
@@ -144,52 +144,4 @@ const EmptyRequest$json = {
 /// Descriptor for `EmptyRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List emptyRequestDescriptor = $convert.base64Decode(
     'CgxFbXB0eVJlcXVlc3Q=');
-
-const $core.Map<$core.String, $core.dynamic> MosqueDashboardServiceBase$json = {
-  '1': 'MosqueDashboardService',
-  '2': [
-    {'1': 'GetDataForMobileApp', '2': '.com.mujeeb.mosquedashboard.grpc.EmptyRequest', '3': '.com.mujeeb.mosquedashboard.grpc.GetDataForMobileAppRequest', '4': {}},
-    {'1': 'UpdateNamazTime', '2': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '3': '.com.mujeeb.mosquedashboard.grpc.GenericReply', '4': {}},
-    {'1': 'ChangeHijriAdjustment', '2': '.com.mujeeb.mosquedashboard.grpc.HijriAdjustmentUpdateRequest', '3': '.com.mujeeb.mosquedashboard.grpc.GenericReply', '4': {}},
-    {'1': 'TestAudio', '2': '.com.mujeeb.mosquedashboard.grpc.EmptyRequest', '3': '.com.mujeeb.mosquedashboard.grpc.GenericReply', '4': {}},
-    {'1': 'ChangeScreenSaverState', '2': '.com.mujeeb.mosquedashboard.grpc.ScreenSaverStateUpdateRequest', '3': '.com.mujeeb.mosquedashboard.grpc.GenericReply', '4': {}},
-    {'1': 'SetDateTime', '2': '.com.mujeeb.mosquedashboard.grpc.StringContainer', '3': '.com.mujeeb.mosquedashboard.grpc.GenericReply', '4': {}},
-    {'1': 'RestartSystem', '2': '.com.mujeeb.mosquedashboard.grpc.EmptyRequest', '3': '.com.mujeeb.mosquedashboard.grpc.GenericReply', '4': {}},
-    {'1': 'HasDateChanged', '2': '.com.mujeeb.mosquedashboard.grpc.EmptyRequest', '3': '.com.mujeeb.mosquedashboard.grpc.StringContainer', '4': {}},
-  ],
-};
-
-@$core.Deprecated('Use mosqueDashboardServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MosqueDashboardServiceBase$messageJson = {
-  '.com.mujeeb.mosquedashboard.grpc.EmptyRequest': EmptyRequest$json,
-  '.com.mujeeb.mosquedashboard.grpc.GetDataForMobileAppRequest': GetDataForMobileAppRequest$json,
-  '.com.mujeeb.mosquedashboard.grpc.NamazTime': NamazTime$json,
-  '.com.mujeeb.mosquedashboard.grpc.AuthData': AuthData$json,
-  '.com.mujeeb.mosquedashboard.grpc.GenericReply': GenericReply$json,
-  '.com.mujeeb.mosquedashboard.grpc.HijriAdjustmentUpdateRequest': HijriAdjustmentUpdateRequest$json,
-  '.com.mujeeb.mosquedashboard.grpc.ScreenSaverStateUpdateRequest': ScreenSaverStateUpdateRequest$json,
-  '.com.mujeeb.mosquedashboard.grpc.StringContainer': StringContainer$json,
-};
-
-/// Descriptor for `MosqueDashboardService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List mosqueDashboardServiceDescriptor = $convert.base64Decode(
-    'ChZNb3NxdWVEYXNoYm9hcmRTZXJ2aWNlEoMBChNHZXREYXRhRm9yTW9iaWxlQXBwEi0uY29tLm'
-    '11amVlYi5tb3NxdWVkYXNoYm9hcmQuZ3JwYy5FbXB0eVJlcXVlc3QaOy5jb20ubXVqZWViLm1v'
-    'c3F1ZWRhc2hib2FyZC5ncnBjLkdldERhdGFGb3JNb2JpbGVBcHBSZXF1ZXN0IgASbgoPVXBkYX'
-    'RlTmFtYXpUaW1lEiouY29tLm11amVlYi5tb3NxdWVkYXNoYm9hcmQuZ3JwYy5OYW1helRpbWUa'
-    'LS5jb20ubXVqZWViLm1vc3F1ZWRhc2hib2FyZC5ncnBjLkdlbmVyaWNSZXBseSIAEocBChVDaG'
-    'FuZ2VIaWpyaUFkanVzdG1lbnQSPS5jb20ubXVqZWViLm1vc3F1ZWRhc2hib2FyZC5ncnBjLkhp'
-    'anJpQWRqdXN0bWVudFVwZGF0ZVJlcXVlc3QaLS5jb20ubXVqZWViLm1vc3F1ZWRhc2hib2FyZC'
-    '5ncnBjLkdlbmVyaWNSZXBseSIAEmsKCVRlc3RBdWRpbxItLmNvbS5tdWplZWIubW9zcXVlZGFz'
-    'aGJvYXJkLmdycGMuRW1wdHlSZXF1ZXN0Gi0uY29tLm11amVlYi5tb3NxdWVkYXNoYm9hcmQuZ3'
-    'JwYy5HZW5lcmljUmVwbHkiABKJAQoWQ2hhbmdlU2NyZWVuU2F2ZXJTdGF0ZRI+LmNvbS5tdWpl'
-    'ZWIubW9zcXVlZGFzaGJvYXJkLmdycGMuU2NyZWVuU2F2ZXJTdGF0ZVVwZGF0ZVJlcXVlc3QaLS'
-    '5jb20ubXVqZWViLm1vc3F1ZWRhc2hib2FyZC5ncnBjLkdlbmVyaWNSZXBseSIAEnAKC1NldERh'
-    'dGVUaW1lEjAuY29tLm11amVlYi5tb3NxdWVkYXNoYm9hcmQuZ3JwYy5TdHJpbmdDb250YWluZX'
-    'IaLS5jb20ubXVqZWViLm1vc3F1ZWRhc2hib2FyZC5ncnBjLkdlbmVyaWNSZXBseSIAEm8KDVJl'
-    'c3RhcnRTeXN0ZW0SLS5jb20ubXVqZWViLm1vc3F1ZWRhc2hib2FyZC5ncnBjLkVtcHR5UmVxdW'
-    'VzdBotLmNvbS5tdWplZWIubW9zcXVlZGFzaGJvYXJkLmdycGMuR2VuZXJpY1JlcGx5IgAScwoO'
-    'SGFzRGF0ZUNoYW5nZWQSLS5jb20ubXVqZWViLm1vc3F1ZWRhc2hib2FyZC5ncnBjLkVtcHR5Um'
-    'VxdWVzdBowLmNvbS5tdWplZWIubW9zcXVlZGFzaGJvYXJkLmdycGMuU3RyaW5nQ29udGFpbmVy'
-    'IgA=');
 

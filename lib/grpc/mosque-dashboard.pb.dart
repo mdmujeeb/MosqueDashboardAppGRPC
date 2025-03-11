@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: assets/proto/mosque-dashboard.proto
+//  source: mosque-dashboard.proto
 //
 // @dart = 2.12
 
@@ -9,7 +9,6 @@
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
@@ -670,36 +669,6 @@ class EmptyRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static EmptyRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EmptyRequest>(create);
   static EmptyRequest? _defaultInstance;
-}
-
-class MosqueDashboardServiceApi {
-  $pb.RpcClient _client;
-  MosqueDashboardServiceApi(this._client);
-
-  $async.Future<GetDataForMobileAppRequest> getDataForMobileApp($pb.ClientContext? ctx, EmptyRequest request) =>
-    _client.invoke<GetDataForMobileAppRequest>(ctx, 'MosqueDashboardService', 'GetDataForMobileApp', request, GetDataForMobileAppRequest())
-  ;
-  $async.Future<GenericReply> updateNamazTime($pb.ClientContext? ctx, NamazTime request) =>
-    _client.invoke<GenericReply>(ctx, 'MosqueDashboardService', 'UpdateNamazTime', request, GenericReply())
-  ;
-  $async.Future<GenericReply> changeHijriAdjustment($pb.ClientContext? ctx, HijriAdjustmentUpdateRequest request) =>
-    _client.invoke<GenericReply>(ctx, 'MosqueDashboardService', 'ChangeHijriAdjustment', request, GenericReply())
-  ;
-  $async.Future<GenericReply> testAudio($pb.ClientContext? ctx, EmptyRequest request) =>
-    _client.invoke<GenericReply>(ctx, 'MosqueDashboardService', 'TestAudio', request, GenericReply())
-  ;
-  $async.Future<GenericReply> changeScreenSaverState($pb.ClientContext? ctx, ScreenSaverStateUpdateRequest request) =>
-    _client.invoke<GenericReply>(ctx, 'MosqueDashboardService', 'ChangeScreenSaverState', request, GenericReply())
-  ;
-  $async.Future<GenericReply> setDateTime($pb.ClientContext? ctx, StringContainer request) =>
-    _client.invoke<GenericReply>(ctx, 'MosqueDashboardService', 'SetDateTime', request, GenericReply())
-  ;
-  $async.Future<GenericReply> restartSystem($pb.ClientContext? ctx, EmptyRequest request) =>
-    _client.invoke<GenericReply>(ctx, 'MosqueDashboardService', 'RestartSystem', request, GenericReply())
-  ;
-  $async.Future<StringContainer> hasDateChanged($pb.ClientContext? ctx, EmptyRequest request) =>
-    _client.invoke<StringContainer>(ctx, 'MosqueDashboardService', 'HasDateChanged', request, StringContainer())
-  ;
 }
 
 

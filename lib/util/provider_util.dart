@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pb.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/auth.dart';
 import '../providers/namaz_times.dart';
-import '../providers/hijri_date.dart';
-import '../providers/temperature.dart';
-import '../providers/occasions.dart';
-import '../util/api_util.dart';
+import '../util/grpc_util.dart';
 import '../util/function_util.dart';
 
 class ProviderUtil {
@@ -20,19 +18,10 @@ class ProviderUtil {
     }
 
     try {
-      final result = await APIUtil.getDataForMobileApp(auth.masjidId);
-      if (result == null) {
-        throw Error();
-      }
+      final GetDataForMobileAppRequest result =
+          await GRPCUtil.getDataForMobileApp();
 
-      Provider.of<NamazTimes>(context, listen: false).updateData(
-          result['namazTimes'], result['masjidList'], result['masjidName']);
-      Provider.of<Temperature>(context, listen: false)
-          .updateData(result['temperature']);
-      Provider.of<HijriDate>(context, listen: false)
-          .updateData(result['hijriDate']);
-      Provider.of<Occasions>(context, listen: false)
-          .updateData(result['occasions']);
+      Provider.of<NamazTimes>(context, listen: false).updateData(result);
       return true;
     } catch (error) {
       FunctionUtil.showErrorSnackBar(context);

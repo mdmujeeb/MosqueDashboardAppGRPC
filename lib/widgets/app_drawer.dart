@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/auth.dart';
-import '../providers/namaz_times.dart';
 import '../pages/login_page.dart';
 import '../pages/about_page.dart';
-// import '../widgets/string_picker.dart';
-// import '../util/function_util.dart';
 
 class MainDrawer extends StatelessWidget {
   final Function _refreshPageState;
@@ -26,7 +23,7 @@ class MainDrawer extends StatelessWidget {
     } else {
       await Provider.of<Auth>(ctx, listen: false).logout();
       Navigator.of(ctx).pop();
-      ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(
         content: Text('Logged out Successfully'),
       ));
     }
@@ -57,7 +54,7 @@ class MainDrawer extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: SafeArea(
             child: Text(
-              Provider.of<NamazTimes>(context).masjidName,
+              'Mosque Dashboard',
               style: TextStyle(
                 fontSize: isAndroidOrWeb ? 20 : 18,
                 color: Theme.of(context).colorScheme.onSecondary,
