@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../util/grpc_util.dart';
-
 class Occasions with ChangeNotifier {
   List<dynamic> _occasions = [];
 

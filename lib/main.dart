@@ -15,10 +15,12 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-  ]).then((_) => runApp(MosqueDashboardApp()));
+  ]).then((_) => runApp(const MosqueDashboardApp()));
 }
 
 class MosqueDashboardApp extends StatelessWidget {
+  const MosqueDashboardApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -37,9 +39,9 @@ class MosqueDashboardApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         routes: {
-          '/': (ctx) => LoadingPage(),
-          LoginPage.ROUTE_NAME: (ctx) => LoginPage(),
-          AboutPage.ROUTE_NAME: (ctx) => AboutPage(),
+          '/': (ctx) => const LoadingPage(),
+          LoginPage.ROUTE_NAME: (ctx) => const LoginPage(),
+          AboutPage.ROUTE_NAME: (ctx) => const AboutPage(),
         },
       ),
     );

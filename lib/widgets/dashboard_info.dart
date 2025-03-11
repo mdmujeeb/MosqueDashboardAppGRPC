@@ -11,6 +11,8 @@ class DashboardInfo extends StatefulWidget {
   static const Color namazTimeValueColor = Colors.green;
   static final Color? nafilNamazTimeValueColor = Colors.green[700];
 
+  const DashboardInfo({super.key});
+
   @override
   _DashboardInfoState createState() => _DashboardInfoState();
 }
@@ -57,7 +59,7 @@ class _DashboardInfoState extends State<DashboardInfo> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Consumer<NamazTimes>(
-                        builder: (ctx, namazTImes, _) => Container(
+                        builder: (ctx, namazTImes, _) => SizedBox(
                           height: MediaQuery.of(context).size.width >= 470
                               ? 100
                               : 80,

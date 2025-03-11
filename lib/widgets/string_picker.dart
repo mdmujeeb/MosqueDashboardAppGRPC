@@ -6,7 +6,7 @@ class StringPicker extends StatefulWidget {
   final _items;
   final int _initialIndex;
 
-  StringPicker(this._items, this._initialIndex);
+  const StringPicker(this._items, this._initialIndex, {super.key});
 
   @override
   _StringPickerState createState() => _StringPickerState();
@@ -55,9 +55,9 @@ class _StringPickerState extends State<StringPicker> {
           const SizedBox(height: 15),
           ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith(
+              backgroundColor: WidgetStateProperty.resolveWith(
                   (states) => Theme.of(context).primaryColor),
-              elevation: MaterialStateProperty.resolveWith((states) => 4),
+              elevation: WidgetStateProperty.resolveWith((states) => 4),
             ),
             child: Text(
               'OK',

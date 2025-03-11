@@ -14,7 +14,7 @@ import '../util/function_util.dart';
 class OccasionsWidget extends StatefulWidget {
   final Function _refreshParentPage;
 
-  OccasionsWidget(this._refreshParentPage);
+  const OccasionsWidget(this._refreshParentPage, {super.key});
 
   @override
   _OccasionsWidgetState createState() => _OccasionsWidgetState();
@@ -51,7 +51,7 @@ class _OccasionsWidgetState extends State<OccasionsWidget> {
           children: [
             Expanded(
               child: _isLoading
-                  ? const Center(child: const CircularProgressIndicator())
+                  ? const Center(child: CircularProgressIndicator())
                   : ListView.builder(
                       itemCount: occasions.length,
                       itemBuilder: (ctx, index) => Dismissible(
@@ -140,9 +140,9 @@ class _OccasionsWidgetState extends State<OccasionsWidget> {
             ),
             ElevatedButton.icon(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith(
-                      (states) => Colors.green),
-                  elevation: MaterialStateProperty.resolveWith((states) => 4),
+                  backgroundColor:
+                      WidgetStateProperty.resolveWith((states) => Colors.green),
+                  elevation: WidgetStateProperty.resolveWith((states) => 4),
                 ),
                 label: const Text(
                   'Add Occasion',

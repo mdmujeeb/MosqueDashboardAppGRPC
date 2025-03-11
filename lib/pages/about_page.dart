@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class AboutPage extends StatelessWidget {
   static const ROUTE_NAME = '/about-page';
 
+  const AboutPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final double textScaleFactor = MediaQuery.of(context).textScaleFactor;
@@ -40,7 +42,7 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Divider(),
+              const Divider(),
               InkWell(
                 child: Text(
                   'quicksynclab.in',
@@ -101,8 +103,8 @@ class AboutPage extends StatelessWidget {
               ),
               TextButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) {
+                  foregroundColor: WidgetStateProperty.resolveWith<Color>(
+                    (Set<WidgetState> states) {
                       return Theme.of(context).primaryColor;
                     },
                   ),

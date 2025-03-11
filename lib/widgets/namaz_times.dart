@@ -10,7 +10,7 @@ import '../util/function_util.dart';
 class NamazTimesWidget extends StatefulWidget {
   final Function _refreshParentPage;
 
-  NamazTimesWidget(this._refreshParentPage);
+  const NamazTimesWidget(this._refreshParentPage, {super.key});
 
   @override
   _NamazTimesWidgetState createState() => _NamazTimesWidgetState();
@@ -98,10 +98,9 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton.icon(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith(
+                      backgroundColor: WidgetStateProperty.resolveWith(
                           (states) => Colors.green),
-                      elevation:
-                          MaterialStateProperty.resolveWith((states) => 4),
+                      elevation: WidgetStateProperty.resolveWith((states) => 4),
                     ),
                     label: const Text(
                       'Change',
@@ -137,10 +136,9 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton.icon(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith(
+                      backgroundColor: WidgetStateProperty.resolveWith(
                           (states) => Colors.green),
-                      elevation:
-                          MaterialStateProperty.resolveWith((states) => 4),
+                      elevation: WidgetStateProperty.resolveWith((states) => 4),
                     ),
                     label: const Text(
                       'Change',
@@ -176,10 +174,9 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton.icon(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith(
+                      backgroundColor: WidgetStateProperty.resolveWith(
                           (states) => Colors.green),
-                      elevation:
-                          MaterialStateProperty.resolveWith((states) => 4),
+                      elevation: WidgetStateProperty.resolveWith((states) => 4),
                     ),
                     label: const Text(
                       'Change',
@@ -215,10 +212,9 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton.icon(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith(
+                      backgroundColor: WidgetStateProperty.resolveWith(
                           (states) => Colors.green),
-                      elevation:
-                          MaterialStateProperty.resolveWith((states) => 4),
+                      elevation: WidgetStateProperty.resolveWith((states) => 4),
                     ),
                     label: const Text(
                       'Change',
@@ -235,7 +231,7 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
                     ),
                   ),
           ),
-          Divider(),
+          const Divider(),
           ListTile(
             leading: Chip(
               label: Text(
@@ -254,10 +250,9 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton.icon(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith(
+                      backgroundColor: WidgetStateProperty.resolveWith(
                           (states) => Colors.green),
-                      elevation:
-                          MaterialStateProperty.resolveWith((states) => 4),
+                      elevation: WidgetStateProperty.resolveWith((states) => 4),
                     ),
                     label: const Text(
                       'Change',

@@ -17,6 +17,8 @@ import '../util/function_util.dart';
 // import '../providers/namaz_times.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 
@@ -61,7 +63,7 @@ class _HomePageState extends State<HomePage> {
       NamazTimesWidget(_refreshPage),
       HijriAdjustmentWidget(_refreshPage),
       OccasionsWidget(_refreshPage),
-      ScreenSaverSchedule(),
+      const ScreenSaverSchedule(),
     ];
 
     try {
@@ -145,14 +147,14 @@ class _HomePageState extends State<HomePage> {
         child: MainDrawer(_refreshPageState),
       ),
       body: _isLoading
-          ? Center(child: const CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
               child: Container(
                 color: Colors.white,
                 height: MediaQuery.of(context).size.height - 135,
                 child: Column(
                   children: [
-                    Dashboard(),
+                    const Dashboard(),
                     Expanded(child: _bodyWidgets[_currentTabIndex]),
                   ],
                 ),
@@ -163,8 +165,8 @@ class _HomePageState extends State<HomePage> {
           elevation: 0,
           child: Padding(
             padding: isAndroidOrWeb
-                ? EdgeInsets.symmetric(horizontal: 2, vertical: 4)
-                : EdgeInsets.only(
+                ? const EdgeInsets.symmetric(horizontal: 2, vertical: 4)
+                : const EdgeInsets.only(
                     left: 2,
                     right: 2,
                     top: 4,

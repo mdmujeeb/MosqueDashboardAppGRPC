@@ -9,7 +9,7 @@ import '../pages/about_page.dart';
 class MainDrawer extends StatelessWidget {
   final Function _refreshPageState;
 
-  MainDrawer(this._refreshPageState);
+  const MainDrawer(this._refreshPageState, {super.key});
 
   Future<void> _doLoginLogout(ctx, isLogin) async {
     if (isLogin) {
@@ -93,7 +93,7 @@ class MainDrawer extends StatelessWidget {
         ),
         const Divider(),
         ListTile(
-          leading: Hero(
+          leading: const Hero(
               tag: 'about-mosque-dashboard', child: Icon(Icons.celebration)),
           title: const Text('About Mosque Dashboard'),
           onTap: () {

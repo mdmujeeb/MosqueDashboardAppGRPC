@@ -13,7 +13,7 @@ import '../util/function_util.dart';
 class HijriAdjustmentWidget extends StatefulWidget {
   final Function _refreshParentPage;
 
-  HijriAdjustmentWidget(this._refreshParentPage);
+  const HijriAdjustmentWidget(this._refreshParentPage, {super.key});
 
   @override
   _HijriAdjustmentWidgetState createState() => _HijriAdjustmentWidgetState();
@@ -31,7 +31,7 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
         adjustmentList.indexOf(namazTimes.namazTimes['HIJRI_ADJUSTMENT']);
 
     return Center(
-      child: Container(
+      child: SizedBox(
         width: 300,
         height: 200,
         child: Card(
@@ -65,10 +65,9 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton.icon(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith(
+                      backgroundColor: WidgetStateProperty.resolveWith(
                           (states) => Colors.green),
-                      elevation:
-                          MaterialStateProperty.resolveWith((states) => 4),
+                      elevation: WidgetStateProperty.resolveWith((states) => 4),
                     ),
                     label: const Text(
                       'Change',

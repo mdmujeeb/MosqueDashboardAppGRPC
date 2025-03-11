@@ -7,6 +7,8 @@ import '../util/function_util.dart';
 class LoginPage extends StatefulWidget {
   static const ROUTE_NAME = '/login-page';
 
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -61,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
           alignment: Alignment.center,
           padding: const EdgeInsets.all(20),
           color: Colors.grey,
-          child: Container(
+          child: SizedBox(
             height: 300,
             child: Container(
                 padding: const EdgeInsets.all(20),
@@ -106,10 +108,9 @@ class _LoginPageState extends State<LoginPage> {
                           : ElevatedButton(
                               style: ButtonStyle(
                                 backgroundColor:
-                                    MaterialStateProperty.resolveWith(
-                                        (states) =>
-                                            Theme.of(context).primaryColor),
-                                elevation: MaterialStateProperty.resolveWith(
+                                    WidgetStateProperty.resolveWith((states) =>
+                                        Theme.of(context).primaryColor),
+                                elevation: WidgetStateProperty.resolveWith(
                                     (states) => 4),
                               ),
                               child: Text('Login',

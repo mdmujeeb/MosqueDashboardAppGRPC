@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Auth with ChangeNotifier {
-  static const KEY_MASJID_ID = 'masjidId';
-  static const KEY_PASSWORD = 'password';
+  static const keyMasjidId = 'masjidId';
+  static const keyPassword = 'password';
 
   String _masjidId = '1';
   String _password = '';
 
   Future<bool> fetchAndSetData() async {
-    var prefs;
+    SharedPreferences prefs;
     try {
       prefs = await SharedPreferences.getInstance();
-      var data = prefs.get('data');
+      dynamic data = prefs.get('data');
       if (data == null) {
         return true;
       }
-      data = json.decode(data);
-      _masjidId = data[KEY_MASJID_ID] == null ? 1 : data[KEY_MASJID_ID];
-      _password = data[KEY_PASSWORD];
+      data = json.decode(data.toString());
+      _masjidId = '' + (data?[keyMasjidId] ?? '1').toString();
+      _password = '' + (data?[keyPassword] ?? '').toString();
       notifyListeners();
       return true;
     } catch (error) {
@@ -29,14 +29,14 @@ class Auth with ChangeNotifier {
 
   Future<bool> successfulAuthentication(
       String masjidId, String password) async {
-    var prefs;
+    SharedPreferences prefs;
     try {
       prefs = await SharedPreferences.getInstance();
       await prefs.setString(
           'data',
           json.encode({
-            KEY_MASJID_ID: masjidId,
-            KEY_PASSWORD: password,
+            keyMasjidId: masjidId,
+            keyPassword: password,
           }));
       _masjidId = masjidId;
       _password = password;
@@ -54,8 +54,8 @@ class Auth with ChangeNotifier {
       await prefs.setString(
           'data',
           json.encode({
-            KEY_MASJID_ID: _masjidId,
-            KEY_PASSWORD: _password,
+            keyMasjidId: _masjidId,
+            keyPassword: _password,
           }));
       notifyListeners();
       return true;

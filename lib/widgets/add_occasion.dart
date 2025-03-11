@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddOccasion extends StatefulWidget {
+  const AddOccasion({super.key});
+
   @override
   _AddOccasionState createState() => _AddOccasionState();
 }
@@ -60,9 +62,9 @@ class _AddOccasionState extends State<AddOccasion> {
           const SizedBox(height: 15),
           ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith(
+              backgroundColor: WidgetStateProperty.resolveWith(
                   (states) => Theme.of(context).primaryColor),
-              elevation: MaterialStateProperty.resolveWith((states) => 4),
+              elevation: WidgetStateProperty.resolveWith((states) => 4),
             ),
             child: Text(
               'OK',

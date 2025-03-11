@@ -8,6 +8,8 @@ import '../util/function_util.dart';
 import '../widgets/time_picker.dart';
 
 class ScreenSaverSchedule extends StatefulWidget {
+  const ScreenSaverSchedule({super.key});
+
   @override
   _ScreenSaverScheduleState createState() => _ScreenSaverScheduleState();
 }
@@ -106,10 +108,10 @@ class _ScreenSaverScheduleState extends State<ScreenSaverSchedule> {
                   ? const CircularProgressIndicator()
                   : ElevatedButton.icon(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
+                        backgroundColor: WidgetStateProperty.resolveWith(
                             (states) => Colors.green),
                         elevation:
-                            MaterialStateProperty.resolveWith((states) => 4),
+                            WidgetStateProperty.resolveWith((states) => 4),
                       ),
                       label: const Text(
                         'Change',
@@ -149,10 +151,10 @@ class _ScreenSaverScheduleState extends State<ScreenSaverSchedule> {
                   ? const CircularProgressIndicator()
                   : ElevatedButton.icon(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith(
+                        backgroundColor: WidgetStateProperty.resolveWith(
                             (states) => Colors.green),
                         elevation:
-                            MaterialStateProperty.resolveWith((states) => 4),
+                            WidgetStateProperty.resolveWith((states) => 4),
                       ),
                       label: const Text(
                         'Change',

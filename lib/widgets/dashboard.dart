@@ -8,6 +8,8 @@ import '../util/function_util.dart';
 import '../util/grpc_util.dart';
 
 class Dashboard extends StatefulWidget {
+  const Dashboard({super.key});
+
   @override
   _DashboardState createState() => _DashboardState();
 }
@@ -43,20 +45,20 @@ class _DashboardState extends State<Dashboard> {
     // String msg = namazTimes.isScreenSaverEnabled ? 'Turn Off' : 'Turn On';
     // _screenSaverSwitchValue = namazTimes.isScreenSaverEnabled;
 
-    return Container(
+    return SizedBox(
       height: 290,
       child: Card(
         elevation: 2,
         child: Column(
           children: [
-            Expanded(child: DashboardInfo()),
+            const Expanded(child: DashboardInfo()),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _isLoadingSetTime
                     ? const Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: const CircularProgressIndicator())
+                        padding: EdgeInsets.all(10),
+                        child: CircularProgressIndicator())
                     : TextButton.icon(
                         onPressed: _submitSetTimeRequest,
                         icon: const Icon(Icons.autorenew),

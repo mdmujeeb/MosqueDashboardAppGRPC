@@ -4,6 +4,8 @@ import '../util/provider_util.dart';
 import 'home_page.dart';
 
 class LoadingPage extends StatelessWidget {
+  const LoadingPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -12,7 +14,7 @@ class LoadingPage extends StatelessWidget {
           snapshot.connectionState == ConnectionState.waiting
               ? MMScaffold(const CircularProgressIndicator()).widget()
               : snapshot.data == true
-                  ? HomePage()
+                  ? const HomePage()
                   : MMScaffold(
                       const Text(
                         'An error has Occured. Please make sure that you are connected to Mosque Dashboard WiFi.',

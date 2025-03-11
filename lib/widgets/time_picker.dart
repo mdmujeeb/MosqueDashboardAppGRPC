@@ -6,7 +6,7 @@ class TimePicker extends StatefulWidget {
   final int _initialHours;
   final int _initialMinutes;
 
-  TimePicker(this._initialHours, this._initialMinutes);
+  const TimePicker(this._initialHours, this._initialMinutes, {super.key});
 
   @override
   _TimePickerState createState() => _TimePickerState();
@@ -59,9 +59,9 @@ class _TimePickerState extends State<TimePicker> {
           const SizedBox(height: 15),
           ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith(
+              backgroundColor: WidgetStateProperty.resolveWith(
                   (states) => Theme.of(context).primaryColor),
-              elevation: MaterialStateProperty.resolveWith((states) => 4),
+              elevation: WidgetStateProperty.resolveWith((states) => 4),
             ),
             child: Text(
               'OK',

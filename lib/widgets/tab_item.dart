@@ -6,7 +6,8 @@ class TabItem extends StatelessWidget {
   final _isSelected;
   final _onTap;
 
-  TabItem(this._text, this._icon, this._isSelected, this._onTap);
+  const TabItem(this._text, this._icon, this._isSelected, this._onTap,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
