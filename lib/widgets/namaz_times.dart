@@ -53,10 +53,14 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
           // final result = await Provider.of<NamazTimes>(context, listen: false)
           //     .updateNamazTime(auth.masjidId, auth.password, name,
           //         '$newHours:$strNewMinutes');
-          final GenericReply result =
-              await Provider.of<NamazTimes>(context, listen: false)
-                  .updateNamazTime(
-                      auth.masjidId, auth.password, name, newHours, newMinutes);
+          final GenericReply result = await Provider.of<NamazTimes>(context,
+                  listen: false)
+              .updateNamazTime(
+                  auth.masjidId,
+                  auth.password,
+                  name,
+                  (name != 'FAJR' && newHours < 12) ? newHours + 12 : newHours,
+                  newMinutes);
           if (result.responseCode == 0) {
             FunctionUtil.showSnackBar(
                 context, 'Updated successfully.', Colors.green);

@@ -56,7 +56,7 @@ class _ScreenSaverScheduleState extends State<ScreenSaverSchedule> {
                       auth.masjidId,
                       auth.password,
                       isStartTime ? 'SCREEN_SAVER_ON' : 'SCREEN_SAVER_OFF',
-                      newHours,
+                      (isStartTime && newHours < 12) ? newHours + 12 : newHours,
                       newMinutes);
           if (result.responseCode == 0) {
             FunctionUtil.showSnackBar(

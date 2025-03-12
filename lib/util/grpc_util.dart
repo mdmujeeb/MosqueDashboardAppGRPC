@@ -5,8 +5,8 @@ import 'package:grpc/grpc.dart';
 import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pbgrpc.dart';
 
 class GRPCUtil {
-  static const host = '192.168.42.1';
-  // static const host = '192.168.31.84';
+  // static const host = '192.168.42.1';
+  static const host = '192.168.31.84';
   static const port = 8090;
 
   // ignore: prefer_typing_uninitialized_variables
