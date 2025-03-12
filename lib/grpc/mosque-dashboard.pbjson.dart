@@ -39,12 +39,16 @@ const GetDataForMobileAppRequest$json = {
     {'1': 'asrTime', '3': 3, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'asrTime'},
     {'1': 'ishaTime', '3': 4, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'ishaTime'},
     {'1': 'jumuaTime', '3': 5, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'jumuaTime'},
-    {'1': 'screenSaverOnTime', '3': 6, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'screenSaverOnTime'},
-    {'1': 'screenSaverOffTime', '3': 7, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'screenSaverOffTime'},
-    {'1': 'hijriAdjustment', '3': 8, '4': 1, '5': 5, '10': 'hijriAdjustment'},
-    {'1': 'hijriDate', '3': 9, '4': 1, '5': 5, '10': 'hijriDate'},
-    {'1': 'hijriMonth', '3': 10, '4': 1, '5': 9, '10': 'hijriMonth'},
-    {'1': 'hijriYear', '3': 11, '4': 1, '5': 5, '10': 'hijriYear'},
+    {'1': 'ishraqTime', '3': 6, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'ishraqTime'},
+    {'1': 'duhaTime', '3': 7, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'duhaTime'},
+    {'1': 'suhurTime', '3': 8, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'suhurTime'},
+    {'1': 'iftarTime', '3': 9, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'iftarTime'},
+    {'1': 'screenSaverOnTime', '3': 10, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'screenSaverOnTime'},
+    {'1': 'screenSaverOffTime', '3': 11, '4': 1, '5': 11, '6': '.com.mujeeb.mosquedashboard.grpc.NamazTime', '10': 'screenSaverOffTime'},
+    {'1': 'hijriAdjustment', '3': 12, '4': 1, '5': 5, '10': 'hijriAdjustment'},
+    {'1': 'hijriDate', '3': 13, '4': 1, '5': 5, '10': 'hijriDate'},
+    {'1': 'hijriMonth', '3': 14, '4': 1, '5': 9, '10': 'hijriMonth'},
+    {'1': 'hijriYear', '3': 15, '4': 1, '5': 5, '10': 'hijriYear'},
   ],
 };
 
@@ -57,12 +61,18 @@ final $typed_data.Uint8List getDataForMobileAppRequestDescriptor = $convert.base
     'Yy5OYW1helRpbWVSB2FzclRpbWUSRgoIaXNoYVRpbWUYBCABKAsyKi5jb20ubXVqZWViLm1vc3'
     'F1ZWRhc2hib2FyZC5ncnBjLk5hbWF6VGltZVIIaXNoYVRpbWUSSAoJanVtdWFUaW1lGAUgASgL'
     'MiouY29tLm11amVlYi5tb3NxdWVkYXNoYm9hcmQuZ3JwYy5OYW1helRpbWVSCWp1bXVhVGltZR'
-    'JYChFzY3JlZW5TYXZlck9uVGltZRgGIAEoCzIqLmNvbS5tdWplZWIubW9zcXVlZGFzaGJvYXJk'
-    'LmdycGMuTmFtYXpUaW1lUhFzY3JlZW5TYXZlck9uVGltZRJaChJzY3JlZW5TYXZlck9mZlRpbW'
-    'UYByABKAsyKi5jb20ubXVqZWViLm1vc3F1ZWRhc2hib2FyZC5ncnBjLk5hbWF6VGltZVISc2Ny'
-    'ZWVuU2F2ZXJPZmZUaW1lEigKD2hpanJpQWRqdXN0bWVudBgIIAEoBVIPaGlqcmlBZGp1c3RtZW'
-    '50EhwKCWhpanJpRGF0ZRgJIAEoBVIJaGlqcmlEYXRlEh4KCmhpanJpTW9udGgYCiABKAlSCmhp'
-    'anJpTW9udGgSHAoJaGlqcmlZZWFyGAsgASgFUgloaWpyaVllYXI=');
+    'JKCgppc2hyYXFUaW1lGAYgASgLMiouY29tLm11amVlYi5tb3NxdWVkYXNoYm9hcmQuZ3JwYy5O'
+    'YW1helRpbWVSCmlzaHJhcVRpbWUSRgoIZHVoYVRpbWUYByABKAsyKi5jb20ubXVqZWViLm1vc3'
+    'F1ZWRhc2hib2FyZC5ncnBjLk5hbWF6VGltZVIIZHVoYVRpbWUSSAoJc3VodXJUaW1lGAggASgL'
+    'MiouY29tLm11amVlYi5tb3NxdWVkYXNoYm9hcmQuZ3JwYy5OYW1helRpbWVSCXN1aHVyVGltZR'
+    'JICglpZnRhclRpbWUYCSABKAsyKi5jb20ubXVqZWViLm1vc3F1ZWRhc2hib2FyZC5ncnBjLk5h'
+    'bWF6VGltZVIJaWZ0YXJUaW1lElgKEXNjcmVlblNhdmVyT25UaW1lGAogASgLMiouY29tLm11am'
+    'VlYi5tb3NxdWVkYXNoYm9hcmQuZ3JwYy5OYW1helRpbWVSEXNjcmVlblNhdmVyT25UaW1lEloK'
+    'EnNjcmVlblNhdmVyT2ZmVGltZRgLIAEoCzIqLmNvbS5tdWplZWIubW9zcXVlZGFzaGJvYXJkLm'
+    'dycGMuTmFtYXpUaW1lUhJzY3JlZW5TYXZlck9mZlRpbWUSKAoPaGlqcmlBZGp1c3RtZW50GAwg'
+    'ASgFUg9oaWpyaUFkanVzdG1lbnQSHAoJaGlqcmlEYXRlGA0gASgFUgloaWpyaURhdGUSHgoKaG'
+    'lqcmlNb250aBgOIAEoCVIKaGlqcmlNb250aBIcCgloaWpyaVllYXIYDyABKAVSCWhpanJpWWVh'
+    'cg==');
 
 @$core.Deprecated('Use hijriAdjustmentUpdateRequestDescriptor instead')
 const HijriAdjustmentUpdateRequest$json = {

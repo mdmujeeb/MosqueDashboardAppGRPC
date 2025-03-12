@@ -1,10 +1,12 @@
+import 'dart:io';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'package:grpc/grpc.dart';
 import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pbgrpc.dart';
 
 class GRPCUtil {
-  static const host = '192.168.42.1';
+  // static const host = '192.168.42.1';
+  static const host = '192.168.31.84';
   static const port = 8090;
 
   // ignore: prefer_typing_uninitialized_variables
@@ -53,7 +55,7 @@ class GRPCUtil {
 
   Future<GenericReply> updateNamazTime(String userName, String password,
       String name, int hour, int minute) async {
-    NamazTime namazTime = NamazTime.getDefault();
+    NamazTime namazTime = NamazTime.create();
     namazTime.authData = getAuthData(userName, password);
     namazTime.namazTimeName = name;
     namazTime.hour = hour;
@@ -71,7 +73,7 @@ class GRPCUtil {
   Future<GenericReply> updateHijriAdjustment(
       String userName, String password, int adjustment) async {
     HijriAdjustmentUpdateRequest request =
-        HijriAdjustmentUpdateRequest.getDefault();
+        HijriAdjustmentUpdateRequest.create();
     request.authData = getAuthData(userName, password);
     request.hijriAdjustment = adjustment;
 
@@ -87,7 +89,7 @@ class GRPCUtil {
   Future<GenericReply> changeScreenSaverState(
       String userName, String password, bool state) async {
     ScreenSaverStateUpdateRequest request =
-        ScreenSaverStateUpdateRequest.getDefault();
+        ScreenSaverStateUpdateRequest.create();
     request.authData = getAuthData(userName, password);
     request.isOn = state;
 
@@ -123,7 +125,7 @@ class GRPCUtil {
   Future<GenericReply> setTime(String userName, String password) async {
     DateFormat formatter = DateFormat('dd MMM yyyy H:m:00');
     String strTime = formatter.format(DateTime.now());
-    StringContainer container = StringContainer.getDefault();
+    StringContainer container = StringContainer.create();
     container.str = strTime;
     container.authData = getAuthData(userName, password);
 
@@ -173,7 +175,7 @@ class GRPCUtil {
   // }
 
   AuthData getAuthData(String userName, String password) {
-    AuthData auth = AuthData.getDefault();
+    AuthData auth = AuthData.create();
     auth.userName = userName;
     auth.password = password;
     return auth;
@@ -181,6 +183,8 @@ class GRPCUtil {
 }
 
 void main(List<String> arguments) async {
-  var data = await GRPCUtil().getDataForMobileApp();
+  // var data = await GRPCUtil().getDataForMobileApp();
+  var data = await GRPCUtil().updateNamazTime('1', 'Allah', 'FAJR', 5, 30);
   print(data);
+  exit(0);
 }

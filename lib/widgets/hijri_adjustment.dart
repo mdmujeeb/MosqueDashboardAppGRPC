@@ -23,19 +23,31 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    const adjustmentList = [-5, -4 - 3, -2, -1, 0, 1, 2, 3, 4, 5];
+    const adjustmentList = [
+      '-5',
+      '-4',
+      '-3',
+      '-2',
+      '-1',
+      '0',
+      '1',
+      '2',
+      '3',
+      '4',
+      '5'
+    ];
     final auth = Provider.of<Auth>(context);
     final NamazTimes namazTimes = Provider.of<NamazTimes>(context);
-    final currentIndex =
-        adjustmentList.indexOf(namazTimes.namazTimes['HIJRI_ADJUSTMENT']);
+    final currentIndex = adjustmentList.indexOf(namazTimes.hijriAdjustment);
 
     return Center(
       child: SizedBox(
         width: 300,
-        height: 200,
+        height: 250,
         child: Card(
           elevation: 2,
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            const SizedBox(height: 30),
             Chip(
               avatar: Icon(
                 Icons.brightness_3_outlined,
@@ -51,7 +63,7 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
               ),
               backgroundColor: Colors.green,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 30),
             Text(
               'Current Hijri Adjustment',
               style: TextStyle(
@@ -95,8 +107,10 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
                             await Provider.of<NamazTimes>(context,
                                     listen: false)
                                 .grpcUtil
-                                .updateHijriAdjustment(auth.masjidId,
-                                    auth.password, adjustmentList[index]);
+                                .updateHijriAdjustment(
+                                    auth.masjidId,
+                                    auth.password,
+                                    int.parse(adjustmentList[index]));
                         if (result.responseCode == 0) {
                           FunctionUtil.showSnackBar(
                               context, 'Updated successfully.', Colors.green);

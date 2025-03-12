@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:mosque_dashboard_local/widgets/settings.dart';
 // import 'package:provider/provider.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -62,7 +63,8 @@ class _HomePageState extends State<HomePage> {
     _bodyWidgets = [
       NamazTimesWidget(_refreshPage),
       HijriAdjustmentWidget(_refreshPage),
-      OccasionsWidget(_refreshPage),
+      // OccasionsWidget(_refreshPage),
+      SettingsWidget(_refreshPage),
       const ScreenSaverSchedule(),
     ];
 
@@ -192,8 +194,8 @@ class _HomePageState extends State<HomePage> {
                     }),
                   ),
                   TabItem(
-                    'Occasions',
-                    Icons.calendar_today,
+                    'Settings',
+                    Icons.settings,
                     _currentTabIndex == 2,
                     () => setState(() {
                       _currentTabIndex = 2;

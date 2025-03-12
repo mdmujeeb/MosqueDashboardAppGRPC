@@ -115,6 +115,10 @@ class GetDataForMobileAppRequest extends $pb.GeneratedMessage {
     NamazTime? asrTime,
     NamazTime? ishaTime,
     NamazTime? jumuaTime,
+    NamazTime? ishraqTime,
+    NamazTime? duhaTime,
+    NamazTime? suhurTime,
+    NamazTime? iftarTime,
     NamazTime? screenSaverOnTime,
     NamazTime? screenSaverOffTime,
     $core.int? hijriAdjustment,
@@ -137,6 +141,18 @@ class GetDataForMobileAppRequest extends $pb.GeneratedMessage {
     }
     if (jumuaTime != null) {
       $result.jumuaTime = jumuaTime;
+    }
+    if (ishraqTime != null) {
+      $result.ishraqTime = ishraqTime;
+    }
+    if (duhaTime != null) {
+      $result.duhaTime = duhaTime;
+    }
+    if (suhurTime != null) {
+      $result.suhurTime = suhurTime;
+    }
+    if (iftarTime != null) {
+      $result.iftarTime = iftarTime;
     }
     if (screenSaverOnTime != null) {
       $result.screenSaverOnTime = screenSaverOnTime;
@@ -168,12 +184,16 @@ class GetDataForMobileAppRequest extends $pb.GeneratedMessage {
     ..aOM<NamazTime>(3, _omitFieldNames ? '' : 'asrTime', protoName: 'asrTime', subBuilder: NamazTime.create)
     ..aOM<NamazTime>(4, _omitFieldNames ? '' : 'ishaTime', protoName: 'ishaTime', subBuilder: NamazTime.create)
     ..aOM<NamazTime>(5, _omitFieldNames ? '' : 'jumuaTime', protoName: 'jumuaTime', subBuilder: NamazTime.create)
-    ..aOM<NamazTime>(6, _omitFieldNames ? '' : 'screenSaverOnTime', protoName: 'screenSaverOnTime', subBuilder: NamazTime.create)
-    ..aOM<NamazTime>(7, _omitFieldNames ? '' : 'screenSaverOffTime', protoName: 'screenSaverOffTime', subBuilder: NamazTime.create)
-    ..a<$core.int>(8, _omitFieldNames ? '' : 'hijriAdjustment', $pb.PbFieldType.O3, protoName: 'hijriAdjustment')
-    ..a<$core.int>(9, _omitFieldNames ? '' : 'hijriDate', $pb.PbFieldType.O3, protoName: 'hijriDate')
-    ..aOS(10, _omitFieldNames ? '' : 'hijriMonth', protoName: 'hijriMonth')
-    ..a<$core.int>(11, _omitFieldNames ? '' : 'hijriYear', $pb.PbFieldType.O3, protoName: 'hijriYear')
+    ..aOM<NamazTime>(6, _omitFieldNames ? '' : 'ishraqTime', protoName: 'ishraqTime', subBuilder: NamazTime.create)
+    ..aOM<NamazTime>(7, _omitFieldNames ? '' : 'duhaTime', protoName: 'duhaTime', subBuilder: NamazTime.create)
+    ..aOM<NamazTime>(8, _omitFieldNames ? '' : 'suhurTime', protoName: 'suhurTime', subBuilder: NamazTime.create)
+    ..aOM<NamazTime>(9, _omitFieldNames ? '' : 'iftarTime', protoName: 'iftarTime', subBuilder: NamazTime.create)
+    ..aOM<NamazTime>(10, _omitFieldNames ? '' : 'screenSaverOnTime', protoName: 'screenSaverOnTime', subBuilder: NamazTime.create)
+    ..aOM<NamazTime>(11, _omitFieldNames ? '' : 'screenSaverOffTime', protoName: 'screenSaverOffTime', subBuilder: NamazTime.create)
+    ..a<$core.int>(12, _omitFieldNames ? '' : 'hijriAdjustment', $pb.PbFieldType.O3, protoName: 'hijriAdjustment')
+    ..a<$core.int>(13, _omitFieldNames ? '' : 'hijriDate', $pb.PbFieldType.O3, protoName: 'hijriDate')
+    ..aOS(14, _omitFieldNames ? '' : 'hijriMonth', protoName: 'hijriMonth')
+    ..a<$core.int>(15, _omitFieldNames ? '' : 'hijriYear', $pb.PbFieldType.O3, protoName: 'hijriYear')
     ..hasRequiredFields = false
   ;
 
@@ -254,62 +274,106 @@ class GetDataForMobileAppRequest extends $pb.GeneratedMessage {
   NamazTime ensureJumuaTime() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  NamazTime get screenSaverOnTime => $_getN(5);
+  NamazTime get ishraqTime => $_getN(5);
   @$pb.TagNumber(6)
-  set screenSaverOnTime(NamazTime v) { setField(6, v); }
+  set ishraqTime(NamazTime v) { setField(6, v); }
   @$pb.TagNumber(6)
-  $core.bool hasScreenSaverOnTime() => $_has(5);
+  $core.bool hasIshraqTime() => $_has(5);
   @$pb.TagNumber(6)
-  void clearScreenSaverOnTime() => clearField(6);
+  void clearIshraqTime() => clearField(6);
   @$pb.TagNumber(6)
-  NamazTime ensureScreenSaverOnTime() => $_ensure(5);
+  NamazTime ensureIshraqTime() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  NamazTime get screenSaverOffTime => $_getN(6);
+  NamazTime get duhaTime => $_getN(6);
   @$pb.TagNumber(7)
-  set screenSaverOffTime(NamazTime v) { setField(7, v); }
+  set duhaTime(NamazTime v) { setField(7, v); }
   @$pb.TagNumber(7)
-  $core.bool hasScreenSaverOffTime() => $_has(6);
+  $core.bool hasDuhaTime() => $_has(6);
   @$pb.TagNumber(7)
-  void clearScreenSaverOffTime() => clearField(7);
+  void clearDuhaTime() => clearField(7);
   @$pb.TagNumber(7)
-  NamazTime ensureScreenSaverOffTime() => $_ensure(6);
+  NamazTime ensureDuhaTime() => $_ensure(6);
 
   @$pb.TagNumber(8)
-  $core.int get hijriAdjustment => $_getIZ(7);
+  NamazTime get suhurTime => $_getN(7);
   @$pb.TagNumber(8)
-  set hijriAdjustment($core.int v) { $_setSignedInt32(7, v); }
+  set suhurTime(NamazTime v) { setField(8, v); }
   @$pb.TagNumber(8)
-  $core.bool hasHijriAdjustment() => $_has(7);
+  $core.bool hasSuhurTime() => $_has(7);
   @$pb.TagNumber(8)
-  void clearHijriAdjustment() => clearField(8);
+  void clearSuhurTime() => clearField(8);
+  @$pb.TagNumber(8)
+  NamazTime ensureSuhurTime() => $_ensure(7);
 
   @$pb.TagNumber(9)
-  $core.int get hijriDate => $_getIZ(8);
+  NamazTime get iftarTime => $_getN(8);
   @$pb.TagNumber(9)
-  set hijriDate($core.int v) { $_setSignedInt32(8, v); }
+  set iftarTime(NamazTime v) { setField(9, v); }
   @$pb.TagNumber(9)
-  $core.bool hasHijriDate() => $_has(8);
+  $core.bool hasIftarTime() => $_has(8);
   @$pb.TagNumber(9)
-  void clearHijriDate() => clearField(9);
+  void clearIftarTime() => clearField(9);
+  @$pb.TagNumber(9)
+  NamazTime ensureIftarTime() => $_ensure(8);
 
   @$pb.TagNumber(10)
-  $core.String get hijriMonth => $_getSZ(9);
+  NamazTime get screenSaverOnTime => $_getN(9);
   @$pb.TagNumber(10)
-  set hijriMonth($core.String v) { $_setString(9, v); }
+  set screenSaverOnTime(NamazTime v) { setField(10, v); }
   @$pb.TagNumber(10)
-  $core.bool hasHijriMonth() => $_has(9);
+  $core.bool hasScreenSaverOnTime() => $_has(9);
   @$pb.TagNumber(10)
-  void clearHijriMonth() => clearField(10);
+  void clearScreenSaverOnTime() => clearField(10);
+  @$pb.TagNumber(10)
+  NamazTime ensureScreenSaverOnTime() => $_ensure(9);
 
   @$pb.TagNumber(11)
-  $core.int get hijriYear => $_getIZ(10);
+  NamazTime get screenSaverOffTime => $_getN(10);
   @$pb.TagNumber(11)
-  set hijriYear($core.int v) { $_setSignedInt32(10, v); }
+  set screenSaverOffTime(NamazTime v) { setField(11, v); }
   @$pb.TagNumber(11)
-  $core.bool hasHijriYear() => $_has(10);
+  $core.bool hasScreenSaverOffTime() => $_has(10);
   @$pb.TagNumber(11)
-  void clearHijriYear() => clearField(11);
+  void clearScreenSaverOffTime() => clearField(11);
+  @$pb.TagNumber(11)
+  NamazTime ensureScreenSaverOffTime() => $_ensure(10);
+
+  @$pb.TagNumber(12)
+  $core.int get hijriAdjustment => $_getIZ(11);
+  @$pb.TagNumber(12)
+  set hijriAdjustment($core.int v) { $_setSignedInt32(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasHijriAdjustment() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearHijriAdjustment() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.int get hijriDate => $_getIZ(12);
+  @$pb.TagNumber(13)
+  set hijriDate($core.int v) { $_setSignedInt32(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasHijriDate() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearHijriDate() => clearField(13);
+
+  @$pb.TagNumber(14)
+  $core.String get hijriMonth => $_getSZ(13);
+  @$pb.TagNumber(14)
+  set hijriMonth($core.String v) { $_setString(13, v); }
+  @$pb.TagNumber(14)
+  $core.bool hasHijriMonth() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearHijriMonth() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $core.int get hijriYear => $_getIZ(14);
+  @$pb.TagNumber(15)
+  set hijriYear($core.int v) { $_setSignedInt32(14, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasHijriYear() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearHijriYear() => clearField(15);
 }
 
 class HijriAdjustmentUpdateRequest extends $pb.GeneratedMessage {

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mosque_dashboard_local/util/function_util.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   static const ROUTE_NAME = '/about-page';
@@ -30,13 +32,13 @@ class AboutPage extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: InkWell(
                         child: Image.asset('assets/images/logo.png'),
-                        // onTap: () {
-                        //   try {
-                        //     launch('http://md.alithistech.com');
-                        //   } catch (error) {
-                        //     FunctionUtil.showErrorSnackBar(context);
-                        //   }
-                        // },
+                        onTap: () {
+                          try {
+                            launchUrl(Uri.http('http://quicksynclab.in'));
+                          } catch (error) {
+                            FunctionUtil.showErrorSnackBar(context);
+                          }
+                        },
                       ),
                     ),
                   ),
@@ -53,11 +55,11 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  // try {
-                  //   launch('http://md.alithistech.com');
-                  // } catch (error) {
-                  //   FunctionUtil.showErrorSnackBar(context);
-                  // }
+                  try {
+                    launchUrl(Uri.http('http://quicksynclab.in'));
+                  } catch (error) {
+                    FunctionUtil.showErrorSnackBar(context);
+                  }
                 },
               ),
               const Divider(
@@ -65,7 +67,7 @@ class AboutPage extends StatelessWidget {
               ),
               InkWell(
                 child: Text(
-                  'quicksynclab@gmail.com',
+                  'mohammad.mujeeb@gmail.com',
                   style: TextStyle(
                     fontSize: fontSize,
                     color: Colors.blue,
@@ -73,17 +75,17 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  // try {
-                  //   launch('mailto:mohammad.mujeeb@gmail.com');
-                  // } catch (error) {
-                  //   FunctionUtil.showErrorSnackBar(context);
-                  // }
+                  try {
+                    launchUrl(Uri.http('mailto:mohammad.mujeeb@gmail.com'));
+                  } catch (error) {
+                    FunctionUtil.showErrorSnackBar(context);
+                  }
                 },
               ),
               const SizedBox(height: 20),
               InkWell(
                 child: Text(
-                  '+91 8277755614',
+                  '+91 9880506766',
                   style: TextStyle(
                     fontSize: fontSize,
                     color: Colors.blue,
@@ -91,11 +93,11 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  // try {
-                  //   launch('tel:+919880506766');
-                  // } catch (error) {
-                  //   FunctionUtil.showErrorSnackBar(context);
-                  // }
+                  try {
+                    launchUrl(Uri.http('tel:+919880506766'));
+                  } catch (error) {
+                    FunctionUtil.showErrorSnackBar(context);
+                  }
                 },
               ),
               const Divider(
