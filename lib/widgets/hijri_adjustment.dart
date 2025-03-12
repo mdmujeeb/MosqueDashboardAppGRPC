@@ -118,7 +118,7 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
                           widget._refreshParentPage();
                         } else {
                           FunctionUtil.showSnackBar(
-                              context, 'Failed to Update.', Colors.red);
+                              context, result.description, Colors.red);
                         }
                         setState(() {
                           _isLoading = false;

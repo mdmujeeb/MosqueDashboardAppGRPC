@@ -27,9 +27,9 @@ class NamazTimes with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> updateNamazTime(String masjidId, String password, String name,
-      int hour, int minute) async {
-    final GenericReply result =
+  Future<GenericReply> updateNamazTime(String masjidId, String password,
+      String name, int hour, int minute) async {
+    GenericReply result =
         await _grpcUtil.updateNamazTime(masjidId, password, name, hour, minute);
     if (result.responseCode == 0) {
       NamazTime namazTime = NamazTime.create();
@@ -37,10 +37,8 @@ class NamazTimes with ChangeNotifier {
       namazTime.minute = minute;
       _namazTimes[name] = FunctionUtil.formatTime(namazTime);
       notifyListeners();
-      return true;
-    } else {
-      return false;
     }
+    return result;
   }
 
   get grpcUtil {
@@ -69,25 +67,14 @@ class NamazTimes with ChangeNotifier {
     }
   }
 
-  Future<bool> doZikr(String masjidId, String password) async {
-    final GenericReply result =
-        await _grpcUtil.updateNamazTime(masjidId, password, "ALLAHU", 20, 30);
-    if (result.responseCode == 0) {
-      return true;
-    } else {
-      return false;
-    }
+  Future<GenericReply> doZikr(String masjidId, String password) async {
+    return await _grpcUtil.updateNamazTime(
+        masjidId, password, "ALLAHU", 20, 30);
   }
 
-  Future<bool> setScreenSaverState(
+  Future<GenericReply> setScreenSaverState(
       String masjidId, String password, bool state) async {
-    final GenericReply result =
-        await _grpcUtil.changeScreenSaverState(masjidId, password, state);
-    if (result.responseCode == 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return await _grpcUtil.changeScreenSaverState(masjidId, password, state);
   }
 
   Future<bool> restartSystem() async {

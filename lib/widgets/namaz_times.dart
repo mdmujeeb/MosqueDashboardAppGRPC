@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pb.dart';
 import 'package:provider/provider.dart';
 
 import '../pages/login_page.dart';
@@ -52,15 +53,16 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
           // final result = await Provider.of<NamazTimes>(context, listen: false)
           //     .updateNamazTime(auth.masjidId, auth.password, name,
           //         '$newHours:$strNewMinutes');
-          final result = await Provider.of<NamazTimes>(context, listen: false)
-              .updateNamazTime(
-                  auth.masjidId, auth.password, name, newHours, newMinutes);
-          if (result) {
+          final GenericReply result =
+              await Provider.of<NamazTimes>(context, listen: false)
+                  .updateNamazTime(
+                      auth.masjidId, auth.password, name, newHours, newMinutes);
+          if (result.responseCode == 0) {
             FunctionUtil.showSnackBar(
                 context, 'Updated successfully.', Colors.green);
             widget._refreshParentPage();
           } else {
-            FunctionUtil.showSnackBar(context, 'Failed to Update.', Colors.red);
+            FunctionUtil.showSnackBar(context, result.description, Colors.red);
           }
           setState(() {
             _isLoading[name] = false;

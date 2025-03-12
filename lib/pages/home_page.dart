@@ -8,7 +8,6 @@ import '../widgets/app_drawer.dart';
 import '../widgets/dashboard.dart';
 import '../widgets/namaz_times.dart';
 import '../widgets/hijri_adjustment.dart';
-import '../widgets/occasions.dart';
 import '../widgets/screen_saver_schedule.dart';
 // import '../widgets/string_picker.dart';
 import '../widgets/tab_item.dart';

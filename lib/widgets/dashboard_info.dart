@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pb.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 

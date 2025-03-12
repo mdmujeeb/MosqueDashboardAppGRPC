@@ -1,15 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pbgrpc.dart';
 import 'package:mosque_dashboard_local/providers/namaz_times.dart';
 import 'package:mosque_dashboard_local/util/provider_util.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 import '../providers/auth.dart';
-import '../providers/occasions.dart';
 import '../pages/login_page.dart';
-import '../widgets/add_occasion.dart';
-import '../widgets/custom_alert_dialog.dart';
 import '../util/function_util.dart';
 
 class SettingsWidget extends StatefulWidget {
@@ -75,16 +72,16 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             setState(() {
                               _isLoading = true;
                             });
-                            final response = await namazTimes.doZikr(
-                                auth.masjidId, auth.password);
-                            if (response) {
+                            final GenericReply response = await namazTimes
+                                .doZikr(auth.masjidId, auth.password);
+                            if (response.responseCode == 0) {
                               FunctionUtil.showSnackBar(context,
                                   'Operation Successful.', Colors.green);
                               await ProviderUtil.loadAllProviders(context);
                               widget._refreshParentPage();
                             } else {
                               FunctionUtil.showSnackBar(
-                                  context, 'Operation Failed.', Colors.red);
+                                  context, response.description, Colors.red);
                             }
                             setState(() {
                               _isLoading = false;
@@ -152,17 +149,17 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             setState(() {
                               _isLoading = true;
                             });
-                            final response =
+                            final GenericReply response =
                                 await namazTimes.setScreenSaverState(
                                     auth.masjidId, auth.password, true);
-                            if (response) {
+                            if (response.responseCode == 0) {
                               FunctionUtil.showSnackBar(context,
                                   'Operation Successful.', Colors.green);
                               await ProviderUtil.loadAllProviders(context);
                               widget._refreshParentPage();
                             } else {
                               FunctionUtil.showSnackBar(
-                                  context, 'Operation Failed.', Colors.red);
+                                  context, response.description, Colors.red);
                             }
                             setState(() {
                               _isLoading = false;
@@ -188,17 +185,17 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             setState(() {
                               _isLoading = true;
                             });
-                            final response =
+                            final GenericReply response =
                                 await namazTimes.setScreenSaverState(
                                     auth.masjidId, auth.password, false);
-                            if (response) {
+                            if (response.responseCode == 0) {
                               FunctionUtil.showSnackBar(context,
                                   'Operation Successful.', Colors.green);
                               await ProviderUtil.loadAllProviders(context);
                               widget._refreshParentPage();
                             } else {
                               FunctionUtil.showSnackBar(
-                                  context, 'Operation Failed.', Colors.red);
+                                  context, response.description, Colors.red);
                             }
                             setState(() {
                               _isLoading = false;
