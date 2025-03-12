@@ -9,7 +9,8 @@ import '../util/function_util.dart';
 import '../widgets/time_picker.dart';
 
 class ScreenSaverSchedule extends StatefulWidget {
-  const ScreenSaverSchedule({super.key});
+  final Function _refreshParentPage;
+  const ScreenSaverSchedule(this._refreshParentPage, {super.key});
 
   @override
   _ScreenSaverScheduleState createState() => _ScreenSaverScheduleState();
@@ -61,6 +62,7 @@ class _ScreenSaverScheduleState extends State<ScreenSaverSchedule> {
           if (result.responseCode == 0) {
             FunctionUtil.showSnackBar(
                 context, 'Updated successfully.', Colors.green);
+            widget._refreshParentPage();
           } else {
             FunctionUtil.showSnackBar(context, result.description, Colors.red);
           }

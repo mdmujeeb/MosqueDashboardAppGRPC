@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
       HijriAdjustmentWidget(_refreshPage),
       // OccasionsWidget(_refreshPage),
       SettingsWidget(_refreshPage),
-      const ScreenSaverSchedule(),
+      ScreenSaverSchedule(_refreshPage),
     ];
 
     try {

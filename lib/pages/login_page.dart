@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mosque_dashboard_local/grpc/mosque-dashboard.pb.dart';
+import 'package:mosque_dashboard_local/providers/namaz_times.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/auth.dart';
@@ -21,22 +23,22 @@ class _LoginPageState extends State<LoginPage> {
   bool _isLoading = false;
 
   Future<void> _validateAndSubmitForm(context) async {
+    var namazTimes = Provider.of<NamazTimes>(context, listen: false);
     if (_form.currentState!.validate()) {
       _form.currentState!.save();
       setState(() {
         _isLoading = true;
       });
-      // final result = await APIUtil.authenticate(_masjidId, _password);
-      final result = {
-        'resultCode': 0,
-        'description': 'Authentication Successful!'
-      };
-      if (result['resultCode'] == 0) {
+      final GenericReply result = await namazTimes.grpcUtil
+          .updateHijriAdjustment(
+              _masjidId, _password, int.parse(namazTimes.hijriAdjustment));
+
+      if (result.responseCode == 0) {
         bool res = await Provider.of<Auth>(context, listen: false)
             .successfulAuthentication(_masjidId, _password);
         if (res) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(result['description'].toString()),
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('Authentication Successful!'),
           ));
           Navigator.of(context).pop(true);
         } else {
@@ -44,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
         }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(result['description'].toString()),
+          content: Text(result.description),
           backgroundColor: Theme.of(context).colorScheme.error,
         ));
       }
