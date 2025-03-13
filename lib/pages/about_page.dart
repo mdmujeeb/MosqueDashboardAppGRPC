@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mosque_dashboard_local/util/function_util.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   static const ROUTE_NAME = '/about-page';
@@ -33,11 +31,11 @@ class AboutPage extends StatelessWidget {
                       child: InkWell(
                         child: Image.asset('assets/images/logo.png'),
                         onTap: () {
-                          try {
-                            launchUrl(Uri.http('http://quicksynclab.in'));
-                          } catch (error) {
-                            FunctionUtil.showErrorSnackBar(context);
-                          }
+                          // try {
+                          //   launchUrl(Uri.http('http://quicksynclab.in'));
+                          // } catch (error) {
+                          //   FunctionUtil.showErrorSnackBar(context);
+                          // }
                         },
                       ),
                     ),
@@ -55,11 +53,11 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  try {
-                    launchUrl(Uri.http('http://quicksynclab.in'));
-                  } catch (error) {
-                    FunctionUtil.showErrorSnackBar(context);
-                  }
+                  // try {
+                  //   launchUrl(Uri.http('http://quicksynclab.in'));
+                  // } catch (error) {
+                  //   FunctionUtil.showErrorSnackBar(context);
+                  // }
                 },
               ),
               const Divider(
@@ -75,11 +73,11 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  try {
-                    launchUrl(Uri.http('mailto:mohammad.mujeeb@gmail.com'));
-                  } catch (error) {
-                    FunctionUtil.showErrorSnackBar(context);
-                  }
+                  // try {
+                  //   launchUrl(Uri.http('mailto:mohammad.mujeeb@gmail.com'));
+                  // } catch (error) {
+                  //   FunctionUtil.showErrorSnackBar(context);
+                  // }
                 },
               ),
               const SizedBox(height: 20),
@@ -93,11 +91,11 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  try {
-                    launchUrl(Uri.http('tel:+919880506766'));
-                  } catch (error) {
-                    FunctionUtil.showErrorSnackBar(context);
-                  }
+                  // try {
+                  //   launchUrl(Uri.http('tel:+919880506766'));
+                  // } catch (error) {
+                  //   FunctionUtil.showErrorSnackBar(context);
+                  // }
                 },
               ),
               const Divider(
