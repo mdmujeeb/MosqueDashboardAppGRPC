@@ -19,6 +19,7 @@ class SettingsWidget extends StatefulWidget {
 }
 
 class _SettingsWidgetState extends State<SettingsWidget> {
+  // ignore: unused_field
   bool _isLoading = false;
   bool isAndroidOrWeb = true;
 

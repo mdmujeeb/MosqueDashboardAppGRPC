@@ -41,7 +41,7 @@ class MosqueDashboardApp extends StatelessWidget {
         routes: {
           '/': (ctx) => const LoadingPage(),
           LoginPage.ROUTE_NAME: (ctx) => const LoginPage(),
-          AboutPage.ROUTE_NAME: (ctx) => const AboutPage(),
+          AboutPage.routeName: (ctx) => const AboutPage(),
         },
       ),
     );

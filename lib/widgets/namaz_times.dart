@@ -79,9 +79,9 @@ class _NamazTimesWidgetState extends State<NamazTimesWidget> {
   @override
   Widget build(BuildContext context) {
     final NamazTimes namazTimes = Provider.of<NamazTimes>(context);
-    final double textScaleFactor = MediaQuery.of(context).textScaleFactor;
-    final double namazTimeSize =
-        (MediaQuery.of(context).size.width >= 380 ? 20 : 12) / textScaleFactor;
+    final double namazTimeSize = MediaQuery.of(context)
+        .textScaler
+        .scale(MediaQuery.of(context).size.width >= 380 ? 20 : 12);
 
     return Center(
       child: ListView(

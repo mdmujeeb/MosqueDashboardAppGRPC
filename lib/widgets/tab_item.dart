@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TabItem extends StatelessWidget {
-  final _text;
-  final _icon;
-  final _isSelected;
-  final _onTap;
+  final String _text;
+  final IconData? _icon;
+  final bool _isSelected;
+  final GestureTapCallback? _onTap;
 
   const TabItem(this._text, this._icon, this._isSelected, this._onTap,
       {super.key});
@@ -21,7 +21,7 @@ class TabItem extends StatelessWidget {
             color: _isSelected ? theme.primaryColor : Colors.grey,
             size: MediaQuery.of(context).size.width >= 380
                 ? null
-                : 20 / MediaQuery.of(context).textScaleFactor,
+                : MediaQuery.of(context).textScaler.scale(20),
           ),
           Text(
             _text,
@@ -29,7 +29,7 @@ class TabItem extends StatelessWidget {
               color: _isSelected ? theme.primaryColor : Colors.grey,
               fontSize: MediaQuery.of(context).size.width >= 380
                   ? null
-                  : 12 / MediaQuery.of(context).textScaleFactor,
+                  : MediaQuery.of(context).textScaler.scale(12),
             ),
           ),
         ],

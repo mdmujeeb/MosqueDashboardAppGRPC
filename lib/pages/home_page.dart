@@ -97,10 +97,9 @@ class _HomePageState extends State<HomePage> {
         title: Text(
           'Mosque Dashboard',
           style: TextStyle(
-              fontSize: (isAndroidOrWeb
-                      ? (MediaQuery.of(context).size.width >= 380 ? 19 : 15)
-                      : 15) /
-                  MediaQuery.of(context).textScaleFactor),
+              fontSize: MediaQuery.of(context).textScaler.scale(isAndroidOrWeb
+                  ? (MediaQuery.of(context).size.width >= 380 ? 19 : 15)
+                  : 15)),
         ),
         // actions: [
         //   TextButton.icon(

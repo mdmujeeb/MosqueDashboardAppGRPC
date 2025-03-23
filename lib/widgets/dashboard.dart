@@ -69,8 +69,9 @@ class _DashboardState extends State<Dashboard> {
                           style: TextStyle(
                               fontSize: MediaQuery.of(context).size.width >= 380
                                   ? null
-                                  : 12 /
-                                      MediaQuery.of(context).textScaleFactor),
+                                  : MediaQuery.of(context)
+                                      .textScaler
+                                      .scale(12)),
                         ),
                       ),
                 // _isLoadingScreenSaver

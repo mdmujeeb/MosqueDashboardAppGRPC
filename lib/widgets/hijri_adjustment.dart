@@ -56,9 +56,8 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
               label: Text(
                 namazTimes.hijriAdjustment,
                 style: TextStyle(
-                    fontSize:
-                        (MediaQuery.of(context).size.width >= 380 ? 20 : 15) /
-                            MediaQuery.of(context).textScaleFactor,
+                    fontSize: MediaQuery.of(context).textScaler.scale(
+                        MediaQuery.of(context).size.width >= 380 ? 20 : 15),
                     color: Theme.of(context).colorScheme.onSecondary),
               ),
               backgroundColor: Colors.green,
@@ -67,8 +66,9 @@ class _HijriAdjustmentWidgetState extends State<HijriAdjustmentWidget> {
             Text(
               'Current Hijri Adjustment',
               style: TextStyle(
-                fontSize: (MediaQuery.of(context).size.width >= 380 ? 20 : 15) /
-                    MediaQuery.of(context).textScaleFactor,
+                fontSize: MediaQuery.of(context)
+                    .textScaler
+                    .scale(MediaQuery.of(context).size.width >= 380 ? 20 : 15),
               ),
             ),
             const Divider(),

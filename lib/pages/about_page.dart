@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatelessWidget {
-  static const ROUTE_NAME = '/about-page';
+  static const routeName = '/about-page';
 
   const AboutPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final double textScaleFactor = MediaQuery.of(context).textScaleFactor;
-    final double fontSize =
-        (MediaQuery.of(context).size.width >= 380 ? 20 : 15) / textScaleFactor;
+    final double fontSize = MediaQuery.of(context)
+        .textScaler
+        .scale(MediaQuery.of(context).size.width >= 380 ? 20 : 15);
     return Scaffold(
       appBar: AppBar(
         title: const Text('About Mosque Dashboard'),

@@ -123,11 +123,12 @@ class _OccasionsWidgetState extends State<OccasionsWidget> {
                           title: Text(
                             occasions.occasions[index]['description'],
                             style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.width >=
-                                        380
-                                    ? null
-                                    : 13 /
-                                        MediaQuery.of(context).textScaleFactor),
+                                fontSize:
+                                    MediaQuery.of(context).size.width >= 380
+                                        ? null
+                                        : MediaQuery.of(context)
+                                            .textScaler
+                                            .scale(13)),
                           ),
                           trailing: TextButton.icon(
                             onPressed: null,

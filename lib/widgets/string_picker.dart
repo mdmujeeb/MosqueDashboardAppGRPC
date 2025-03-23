@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StringPicker extends StatefulWidget {
-  final _items;
+  final List<String> _items;
   final int _initialIndex;
 
   const StringPicker(this._items, this._initialIndex, {super.key});
@@ -14,7 +14,7 @@ class StringPicker extends StatefulWidget {
 
 class _StringPickerState extends State<StringPicker> {
   int _index = 0;
-  var _controller;
+  FixedExtentScrollController? _controller;
   bool isAndroidOrWeb = true;
 
   @override

@@ -36,9 +36,9 @@ class _DashboardInfoState extends State<DashboardInfo> {
 
   @override
   Widget build(BuildContext context) {
-    final double textScaleFactor = MediaQuery.of(context).textScaleFactor;
-    namazFontSize =
-        (MediaQuery.of(context).size.width < 380 ? 12 : 18) / textScaleFactor;
+    namazFontSize = MediaQuery.of(context)
+        .textScaler
+        .scale(MediaQuery.of(context).size.width < 380 ? 12 : 18);
 
     return Consumer<NamazTimes>(
       builder: (ctx, namazTimes, _) => Container(
@@ -79,10 +79,10 @@ class _DashboardInfoState extends State<DashboardInfo> {
                       Text(
                         DateFormat('dd MMM yyyy').format(DateTime.now()),
                         style: TextStyle(
-                          fontSize: (MediaQuery.of(context).size.width >= 380
+                          fontSize: MediaQuery.of(context).textScaler.scale(
+                              MediaQuery.of(context).size.width >= 380
                                   ? 20
-                                  : 15) /
-                              MediaQuery.of(context).textScaleFactor,
+                                  : 15),
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
                         ),
@@ -91,10 +91,10 @@ class _DashboardInfoState extends State<DashboardInfo> {
                         builder: (ctx, namazTimes, _) => Text(
                           '${namazTimes.namazTimes['HIJRI_DATE']} ${namazTimes.namazTimes['HIJRI_MONTH']} ${namazTimes.namazTimes['HIJRI_YEAR']}',
                           style: TextStyle(
-                            fontSize: (MediaQuery.of(context).size.width >= 380
+                            fontSize: MediaQuery.of(context).textScaler.scale(
+                                MediaQuery.of(context).size.width >= 380
                                     ? 20
-                                    : 15) /
-                                MediaQuery.of(context).textScaleFactor,
+                                    : 15),
                             color: Colors.blue,
                             fontWeight: FontWeight.bold,
                           ),

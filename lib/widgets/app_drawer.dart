@@ -98,7 +98,7 @@ class MainDrawer extends StatelessWidget {
           title: const Text('About Mosque Dashboard'),
           onTap: () {
             Navigator.of(context).pop();
-            Navigator.of(context).pushNamed(AboutPage.ROUTE_NAME);
+            Navigator.of(context).pushNamed(AboutPage.routeName);
           },
         ),
         const Divider(),

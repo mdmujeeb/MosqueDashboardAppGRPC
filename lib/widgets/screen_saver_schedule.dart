@@ -81,9 +81,9 @@ class _ScreenSaverScheduleState extends State<ScreenSaverSchedule> {
     final namazTimes = Provider.of<NamazTimes>(context);
     List<String> times =
         namazTimes.namazTimes['SCREEN_SAVER_SCHEDULE'].split(',');
-    final double textScaleFactor = MediaQuery.of(context).textScaleFactor;
-    double fontSize =
-        (MediaQuery.of(context).size.width >= 380 ? 20 : 15) / textScaleFactor;
+    double fontSize = MediaQuery.of(context)
+        .textScaler
+        .scale(MediaQuery.of(context).size.width >= 380 ? 20 : 15);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
